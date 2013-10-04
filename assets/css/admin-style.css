@@ -1,0 +1,24 @@
+/* Ajustes Perfil */
+/* ----------------------------------------- */
+form#your-profile {
+  padding-left: 33px;
+}
+form#your-profile > p:first-of-type,
+form#your-profile > h3:first-of-type,
+form#your-profile > h3:last-of-type,
+form#your-profile > table.form-table:first-of-type,
+form#your-profile > table.form-table:last-of-type {
+  display: none;
+}
+form#your-profile h3 {
+  margin-left: 10px;
+  font-size: 2em;
+  margin-top: 80px;
+}
+form#your-profile h3:nth-of-type(2) {
+  margin-top: 30px;
+}
+form#your-profile div.wpcf-group-area_foto h3 {
+  display: none;
+}
+/* ----------------------------------------- Ajustes Perfil */

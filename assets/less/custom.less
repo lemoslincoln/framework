@@ -122,190 +122,11 @@
 		}
 	}
 
-	ul.nav-vertical {
-		float: left;
-		width: 30%;
-		margin-top: 60px;
-		
-			li {
-				float: left;
-				clear: both;
-				border: none;
-				&.active {
-					border: none;
-					a {
-						background: none ;
-						border: none !important;
-						border-bottom: 2px solid @qua !important; 
-						color: @pri;
-					}
-				}
-				a {
-					.transition(500ms);
-					text-transform: uppercase;
-					padding: 0px;
-					margin: 5px;
-					font-size: 15px;
-					border: none;
-					border-bottom: 2px solid transparent;
-					color: @qua; 
-					display: inline-block;
-					text-decoration: none;
-					&:hover {
-						background: none ;
-						border: none;
-						border-bottom: 2px solid @qua; 
-						color: @pri;
-					}
-
-				}
-			}
-	}
-	.tab-vertical {
-		float: left;
-		width: 70%;
-		margin-top: 60px;
-		border-left: 2px solid @seg;
-		padding-left: 5%;
-		.transition(500ms);
-	}
 /* ----------------------------------------- Global */		
 
 
 /* Header */
 /* ----------------------------------------- */
-	header#header {
-		padding-top: 35px;
-	}
-	#navmenu {
-		margin-top: 70px;
-		ul { .transition(400ms); }
-		ul.navbar-nav {
-			// Regras para todas as listas
-			li {
-				list-style: none;
-
-				&.current-menu-ancestor > a {
-					color: black !important;
-				}				
-				a { 
-					text-decoration: none;
-					color: @seg;
-				}
-
-			}
-			// Regra Primeiro Nivel
-			> li {
-				position: relative;
-				padding: 0 21px;
-				border-bottom: 2px solid #666666;
-					&:first-of-type { 
-						margin-left: 0;
-						padding-left: 0;
-							a { padding-left: 0; }
-					}
-					&:last-of-type { 
-						margin-right: 0;
-						padding-right: 0;
-							a { padding-right: 0; }
-					}
-					&:hover, &.current-menu-item {
-						border-color: black;
-						> a { color: black; }
-					}
-					&:hover{
-						> ul.sub-menu { 
-							display: block; 
-							opacity: 1; 
-							max-height: auto !important;
-							z-index: 100;
-							li { display: block;}
-						}
-					}
-					a {
-						font-size: 16px;
-						padding-bottom: 6px;
-					}
-					> a {
-						padding: 10px 14.8px 6px;
-						@media (min-width: @screen-md) { padding: 10px 2.3px 6px; }
-						@media (min-width: @screen-lg) { padding: 10px 14.8px 6px; }
-
-					}
-				
-				// Regra Segundo Nivel
-				> ul.sub-menu {
-					padding: 0;
-					background: transparent url('../../images/bg-ul-seg-nivel.png') no-repeat top left;
-					position: absolute;
-					padding-top: 4px;
-					margin-top: -4px;
-					z-index: -1;
-					opacity: 0;
-					max-height: 0;
-					.transition(700ms); 
-					li {
-						display: none;
-						a { font-size: 13px;}
-					}
-					> li {
-						// position: relative;
-						background: #b5b7b7;
-						padding: 0 14px;
-							&:first-of-type { padding-top: 14px; }
-							&:last-of-type { padding-bottom: 14px; }
-							&:hover{
-								> a {
-									color:black;
-								}
-							}
-							&:hover{
-								> ul.sub-menu {
-									display: block; 
-									opacity: 1; 
-									max-height: auto !important;
-									z-index: -1;
-									.transition(700ms);
-									li { display: block;}
-								}
-							}							
-
-						// Regra Terceiro Nivel
-						> ul.sub-menu {
-							position: absolute;
-							padding: 14px;
-							top: 4px;
-							background: #b5b7b7;
-							left: 0;
-							background: #b5b7b7;
-							padding-left: 100%;
-							z-index: -2;
-							opacity: 0;
-							.transition(0ms);
-
-							li {
-								display: none;
-								border-left: #666666 solid 1px;
-								padding-left: 14px; 
-								&:hover, &.current-menu-item {
-									border-color: black;
-									a { color: black; }
-								}
-								a {
-									display: block;
-									white-space:nowrap;
-									padding-bottom: 2px;
-								}
-							}
-
-						}
-					}
-				}
-			}
-		}
-	}
-/* ----------------------------------------- Header */		
-
 
 /* Home */
 /* ----------------------------------------- */
@@ -478,23 +299,10 @@
 /* Footer */
 /* ----------------------------------------- */
 	footer#footer {
-		margin-top: 110px;
-		background: @pri url('../../images/footer-linhas.png') center bottom repeat-x;
-		background-color: @pri;
-		width: 100%;
-		padding-top: 50px;
-		padding-bottom: 25px;
-		display: block;
-	}
-	#copyright {
-		font-size: 12px;
-		padding-top: 35px;
-	}
-	.end-rodape {
-		font-size: 11px;
-		p {
-			margin-top: 10px;
-		}
+		#copyright {
+			font-size: 12px;
+			padding-top: 35px;
+		}	
 	}
 /* ----------------------------------------- Footer */
 

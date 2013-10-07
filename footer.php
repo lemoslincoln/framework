@@ -10,24 +10,16 @@
  * @since Starkers 3.1
  */
 ?>
+	<footer id="footer">
+		<section class="container">
+			<section class="col-xs-8">
+				<section id="copyright" class="row text-center">
+						<p> Copyright <?php echo the_date('Y') ?> - <?php bloginfo('name'); ?> - Alguns direitos reservados</p>
+				</section>
+			</section>
+		</section>
+	</footer>
 
-<?php
-	/* A sidebar in the footer? Yep. You can can customize
-	 * your footer with four columns of widgets.
-	 */
-	get_sidebar( 'footer' );
-?>
-
-			<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-			<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress </a>
-
-<?php
-	/* Always have wp_footer() just before the closing </body>
-	 * tag of your theme, or you will break many plugins, which
-	 * generally use this hook to reference JavaScript files.
-	 */
-
-	wp_footer();
-?>
+<?php wp_footer(); ?>
 </body>
 </html>

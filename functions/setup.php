@@ -252,21 +252,97 @@ function twentyten_widgets_init() {
 	) );
 
 }
+
 /** Register sidebars by running twentyten_widgets_init() on the widgets_init hook. */
 add_action( 'widgets_init', 'twentyten_widgets_init' );
 
 
-/**
- * Limitar o número de caracteres baseado na $tamanho
+/*
+ * Helper function to return the theme option value. If no value has been saved, it returns $default.
+ * Needed because options are saved as serialized strings.
  *
- * @since Bigo 1.0
+ * This code allows the theme to work without errors if the Options Framework plugin has been disabled.
  */
-function limitarString($string, $tamanho, $encode = 'UTF-8') {
-    if( strlen($string) > $tamanho )
-        $string = mb_substr($string, 0, $tamanho - 3, $encode) . '...';
-    else
-        $string = mb_substr($string, 0, $tamanho, $encode);
-    return $string;
+if ( !function_exists( 'of_get_option' ) ) {
+function of_get_option($name, $default = false) {
+    $optionsframework_settings = get_option('optionsframework');
+    // Gets the unique option id
+    $option_name = $optionsframework_settings['id'];
+    if ( get_option($option_name) ) {
+        $options = get_option($option_name);
+    }
+    if ( isset($options[$name]) ) {
+        return $options[$name];
+    } else {
+        return $default;
+    }
 }
+}
+
+
+/* Desativa as Widgets padrões do Dashboard */
+/* ----------------------------------------- */
+
+	function disable_default_dashboard_widgets() {
+
+		remove_meta_box('dashboard_browser_nag', 'dashboard', 'core');
+		remove_meta_box('dashboard_right_now', 'dashboard', 'core');
+		remove_meta_box('dashboard_recent_comments', 'dashboard', 'core');
+		remove_meta_box('dashboard_incoming_links', 'dashboard', 'core');
+		remove_meta_box('dashboard_plugins', 'dashboard', 'core');
+
+		remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
+		remove_meta_box('dashboard_recent_drafts', 'dashboard', 'core');
+		remove_meta_box('dashboard_primary', 'dashboard', 'core');
+		remove_meta_box('dashboard_secondary', 'dashboard', 'core');
+	}
+	add_action('admin_menu', 'disable_default_dashboard_widgets');
+	
+
+/* Carrega Arquivos CSS no Admin */
+/* ----------------------------------------- */
+	
+	function load_custom_wp_admin_style() {
+	        wp_register_style( 'custom_wp_admin_css', get_bloginfo( 'stylesheet_directory' ) . '/assets/css/admin-style.css', false, '1.0.0' );
+	        wp_enqueue_style( 'custom_wp_admin_css' );
+	}
+	add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
+
+
+
+
+/* Carrega Arquivos JS do tema */
+/* ----------------------------------------- */
+add_action( 'wp_print_scripts', 'bigo_load_scripts' );
+
+function bigo_load_scripts(){
+
+       if (!is_admin()){
+                  
+				//desregistrando o jquery nativo e registrando o do CDN do Google.
+				// wp_deregister_script('jquery');
+				// wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2');
+				wp_enqueue_script('jquery');	
+
+//				os demais js
+				wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/js/bootstrap.min.js', array('jquery'));
+				wp_enqueue_script('codigo', get_template_directory_uri(). '/js/codigo.js', array('jquery'));
+      }
+
+}
+
+
+
+
+/* Adiciona o ID do usuário no body-class */
+/* ----------------------------------------- */
+
+function id_usuario_body_class( $classes ) {
+    global $current_user;
+        $classes .= ' user-' . $current_user->ID;
+    return trim( $classes );
+}
+add_filter( 'admin_body_class', 'id_usuario_body_class' );
+
 
 

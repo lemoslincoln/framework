@@ -28,10 +28,38 @@
 
 <body <?php body_class(); ?>>
 
-	<header>
-			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo of_get_option('logo_header', 'no entry'); ?>" /></a>
-			
-			<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'container' => 'nav', 'theme_location' => 'primary' ) ); ?>
-			
+	<header id="header">			
+			<section class="container">
+				<section class="col-xs-8">
+					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo of_get_option('logo_header', 'no entry'); ?>" /></a>
+					
+					<section class="row">						
+						<nav id="navmenu" class="navbar navbar-default" role="navigation">
+						  <!-- Brand and toggle get grouped for better mobile display -->
+						  <div class="navbar-header">
+						    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						      <span class="sr-only">Toggle navigation</span>
+						      <span class="icon-bar"></span>
+						      <span class="icon-bar"></span>
+						      <span class="icon-bar"></span>
+						    </button>
+						    <a class="navbar-brand hidden-lg hidden-md" href="#">Menu</a>
+						  </div>
+
+					    	<?php 
+					    		wp_nav_menu( array( 
+					    		'container' => 'div',
+					    		'menu_class' => 'nav navbar-nav',
+					    		'container_class' => 'collapse navbar-collapse navbar-ex1-collapse',
+					    		'theme_location' => 'global'
+					    		) ); 
+					    	?>		    
+						  </div><!-- /.navbar-collapse -->
+						</nav>
+					</section>
+				</section>
+			</section>
 	</header>
+
+
 

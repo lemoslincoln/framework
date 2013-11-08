@@ -346,3 +346,8 @@ add_filter( 'admin_body_class', 'id_usuario_body_class' );
 
 
 
+function bigo_get_images($size = 'thumbnail') {
+    global $post;
+    return get_children( array('post_parent' => $post->ID, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order') );
+}
+

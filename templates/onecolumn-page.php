@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: One column, no sidebar
+ * Template Name: Modelo
  *
  * A custom page template without sidebar.
  *
@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-            <?php
+      <?php
 			/* Run the loop to output the page.
 			 * If you want to overload this in a child theme then include a file
 			 * called loop-page.php and that will be used instead.

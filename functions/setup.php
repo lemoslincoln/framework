@@ -333,6 +333,27 @@ function bigo_load_scripts(){
 
 
 
+//Insere o arquivo CSS com seus estilos personalizados para a tela de login
+add_action( 'login_head', 'wpmidia_custom_login' );
+function wpmidia_custom_login() {
+		echo '<link media="all" type="text/css" href="'.get_template_directory_uri().'/css/login-style.css" rel="stylesheet">';
+}
+
+//Altera a URL que fica no logo, fazendo com que ao clicarmos nele, sejamos levados para a home do nosso site
+add_filter('login_headerurl', 'wpmidia_custom_wp_login_url');
+function wpmidia_custom_wp_login_url() {
+	return home_url();
+}
+
+//Altera o título do logo, fazendo com que ao passarmos o mouse sobre o logo, apareça o nome do nosso site
+add_filter('login_headertitle', 'wpmidia_custom_wp_login_title');
+function wpmidia_custom_wp_login_title() {
+	return get_option('blogname');
+}
+
+
+
+
 
 /* Adiciona o ID do usuário no body-class */
 /* ----------------------------------------- */

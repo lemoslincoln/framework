@@ -325,8 +325,8 @@ function bigo_load_scripts(){
 				wp_enqueue_script('jquery');	
 
 //				os demais js
-				wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/js/bootstrap.min.js', array('jquery'));
-				wp_enqueue_script('codigo', get_template_directory_uri(). '/js/codigo.js', array('jquery'));
+				wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets//js/bootstrap.min.js', array('jquery'));
+				wp_enqueue_script('codigo', get_template_directory_uri(). '/assets//js/codigo.js', array('jquery'));
       }
 
 }
@@ -336,7 +336,7 @@ function bigo_load_scripts(){
 //Insere o arquivo CSS com seus estilos personalizados para a tela de login
 add_action( 'login_head', 'wpmidia_custom_login' );
 function wpmidia_custom_login() {
-		echo '<link media="all" type="text/css" href="'.get_template_directory_uri().'/css/login-style.css" rel="stylesheet">';
+		echo '<link media="all" type="text/css" href="'.get_template_directory_uri().'/assets/css/login-style.css" rel="stylesheet">';
 }
 
 //Altera a URL que fica no logo, fazendo com que ao clicarmos nele, sejamos levados para a home do nosso site
@@ -364,6 +364,17 @@ function id_usuario_body_class( $classes ) {
     return trim( $classes );
 }
 add_filter( 'admin_body_class', 'id_usuario_body_class' );
+
+
+
+/* Adiciona editor se usuário for editor no body-class */
+/* --------------------------------------------------- */
+
+function role_user_body_class( $classes ) {
+		if( current_user_can('editor') ) { $classes .= ' editor'; }
+    return trim( $classes );
+}
+add_filter( 'admin_body_class', 'role_user_body_class' );
 
 
 

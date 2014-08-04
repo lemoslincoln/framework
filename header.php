@@ -32,27 +32,27 @@
 
 	<header id="header">			
 			<section class="container">
-				<section class="col-xs-8">
+				<section class="col-xs-12">
 					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo of_get_option('logo_header', 'no entry'); ?>" /></a>
 					
 					<section class="row">						
 						<nav id="navmenu" class="navbar navbar-default" role="navigation">
 						  <!-- Brand and toggle get grouped for better mobile display -->
 						  <div class="navbar-header">
-						    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu-retratil">
 						      <span class="sr-only">Toggle navigation</span>
 						      <span class="icon-bar"></span>
 						      <span class="icon-bar"></span>
 						      <span class="icon-bar"></span>
 						    </button>
-						    <a class="navbar-brand hidden-lg hidden-md" href="#">Menu</a>
+						    <a class="navbar-brand visible-xs" href="#">Menu</a>
 						  </div>
 
 					    	<?php 
 					    		wp_nav_menu( array( 
 					    		'container' => 'div',
 					    		'menu_class' => 'nav navbar-nav',
-					    		'container_class' => 'collapse navbar-collapse navbar-ex1-collapse',
+					    		'container_class' => 'collapse navbar-collapse menu-retratil',
 					    		'theme_location' => 'global'
 					    		) ); 
 					    	?>		    

@@ -129,14 +129,17 @@ var WPmap = {
     /* Initialize the map */
     setupMap : function() {
         
-    	var mapInfo = [-16.692368,-49.235102];
-		var latlng = new google.maps.LatLng(mapInfo[0],mapInfo[1]);
-        //get the content
-        // var infoWindowContent = WPmap.mapContainer.getAttribute('data-map-infowindow');
-        var infoWindowContent = '<span class="infoWindow"><img class="icobigo" src="http://192.168.2.108/nomac/wp-content/themes/nomac/images/logo-mapa.png"/></span>';
-        // var infoWindowContent = '<span class="spninfowindows"><span class="bold">SARTRE GUMO</span> <br /> Av. T4, n.1478, Ed. Absolut Business - Setor Bueno</span>';
-        var initialZoom       = WPmap.mapContainer.getAttribute('data-map-zoom');
-
+        var  mapInfo = [-16.739291, -49.295899]
+        // var  mapInfo = [-16.7406668, -49.2955701]
+        //  ,geo = WPmap.mapContainer.getAttribute('data-map-geo')
+	    //  ,mapInfo = geo.split(',')
+		    ,latlng = new google.maps.LatLng(mapInfo[0],mapInfo[1])
+            ,icon = WPmap.mapContainer.getAttribute('data-map-icon')
+            ,title = WPmap.mapContainer.getAttribute('data-map-title')
+            ,text = WPmap.mapContainer.getAttribute('data-map-infowindow')
+            ,infoWindowContent = '<span class="infoWindow"><img class="icon" src="'+ icon +'"/> <h1>'+ title + '</h1><p>' + text + '</p></span>'
+            ,initialZoom       = WPmap.mapContainer.getAttribute('data-map-zoom');
+        
         WPmap.map = new google.maps.Map(WPmap.mapContainer, {
             zoom:parseInt(initialZoom),     //ensure it comes through as an Integer
             center: latlng,

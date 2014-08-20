@@ -3,7 +3,7 @@
 // Mapa 
 
 // Shortcode wpmap_map
-function wpmap_map() {  
+function bigo_mapa() {  
 
   	/** Styles **/
   	wp_register_style('wptuts-style', get_template_directory_uri() . '/assets/map/map.css', '', '', false);
@@ -14,42 +14,23 @@ function wpmap_map() {
   
     wp_register_script('wptuts-custom', get_template_directory_uri() . '/assets/map/map.js', array( 'jquery'), '', true);  
     wp_enqueue_script('wptuts-custom');  
-  
-    $output = sprintf(  
-        '<div id="map-container" data-map-infowindow="%s" data-map-zoom="%s"></div>',  
-        of_get_option('maps_info', 'no entry'),  
-        '17' 
-    );  
-  
-    return $output;  
-}  
-add_shortcode('wpmap_map', 'wpmap_map');  
-
-
-
-
-// Shortcode wpmap_directions
-function wpmap_directions() {  
-  
-    $output = '<div id="dir-container" class="" ></div>';  
-    return $output;  
-  
-}  
-add_shortcode('wpmap_directions_container', 'wpmap_directions');
-
-
-// Shortcode wpmap_input
-function wpmap_directions_input(){
-
-    $address_to = "-16.693027,-49.235046";
-
-	
-    $output = '
-				<div id="geo-directions" class="hidden">
-				 <span  style="display:none;" id="native-link"> </span>
-				</div>
     
-    			<div id="directions">
+    $page_ID = get_the_id(); 
+    $address_to = get_field('geolocalizacao_mapa', $page_ID);
+    $output = '
+      <section id="mapa">
+          <span id="comochegar">
+            <a href="#" onclick="WPmap.getDirections(\'geo\'); return false" class="map-button">Clique aqui e saiba como chegar a compasso a partir da sua localização atual </a>
+          </span>
+          
+      ';
+    $output .= '<div id="dir-container" class="" ></div>';  
+    $output .= '
+        <div id="geo-directions" class="hidden">
+         <span  style="display:none;" id="native-link"> </span>
+        </div>
+    
+          <div id="directions">
                   <input  style="display:none;" id="from-input" type="text" value="" size="20" placeholder="Digite seu endereço aqui" />
                   <select style="display:none;" onchange="" id="unit-input">
                       <option value="metric" selected="selected">Km</option>
@@ -61,8 +42,17 @@ function wpmap_directions_input(){
                </div>
                ';
 
-    return $output;
-}
-add_shortcode('wpmap_directions_input', 'wpmap_directions_input');
-
+    $output .= sprintf(  
+        '<div id="map-container" data-map-infowindow="%s" data-map-geo="%s" data-map-icon="%s"  data-map-title="%s" data-map-zoom="%s"></div>',  
+        get_field('informacao_mapa', $page_ID),  
+        $address_to,  
+        get_field('icone_mapa', $page_ID),  
+        get_bloginfo('name'),
+        '17' 
+    );
+    $output .= '</section>';
+  
+    return $output;  
+}  
+add_shortcode('bigo_mapa', 'bigo_mapa');  
 ?>

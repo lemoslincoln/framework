@@ -33,7 +33,9 @@
 	<header id="header">			
 			<section class="container">
 				<section class="col-xs-12">
-					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo get_field('logotipo', 'option'); ?>" /></a>
+					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<img src="<?php echo get_field('logotipo', 'option'); ?>" />
+					</a>
 					
 					<section class="row">						
 						<nav id="navmenu" class="navbar navbar-default" role="navigation">
@@ -57,7 +59,7 @@
 	    		        'container_class'   => 'collapse navbar-collapse menu-retratil',
 	    		        'menu_class'        => 'nav navbar-nav',
 	    		        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-	    		        'walker'            => new wp_bootstrap_navwalker())
+	    		        'walker'            => new wp_bootstrap_navwalker()
 					    		) ); 
 					    	?>		    
 						  </div><!-- /.navbar-collapse -->

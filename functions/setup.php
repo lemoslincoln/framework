@@ -319,14 +319,17 @@ function bigo_load_scripts(){
 
        if (!is_admin()){
                   
-				//desregistrando o jquery nativo e registrando o do CDN do Google.
+				// Desregistrando o jquery nativo e registrando o do CDN do Google.
 				// wp_deregister_script('jquery');
 				// wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2');
 				wp_enqueue_script('jquery');	
 
-//				os demais js
-				wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets//js/bootstrap.min.js', array('jquery'));
-				wp_enqueue_script('codigo', get_template_directory_uri(). '/assets//js/codigo.js', array('jquery'));
+				// Os demais js
+				wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets/js/bootstrap.min.js', array('jquery'));
+
+				// Smooth Scrolling - https://github.com/fatlinesofcode/jquery.smoothwheel
+				// wp_enqueue_script('smoothwheel', get_template_directory_uri(). '/assets/js/jquery.smoothwheel-ck.js', array('jquery'));
+				wp_enqueue_script('codigo', get_template_directory_uri(). '/assets/js/codigo.js', array('jquery'));
       }
 
 }

@@ -303,37 +303,54 @@ function of_get_option($name, $default = false) {
 /* ----------------------------------------- */
 	
 	function load_custom_wp_admin_style() {
-	        wp_register_style( 'custom_wp_admin_css', get_bloginfo( 'stylesheet_directory' ) . '/assets/css/admin-style.css', false, '1.0.0' );
-	        wp_enqueue_style( 'custom_wp_admin_css' );
+    wp_register_style( 'custom_wp_admin_css', get_bloginfo( 'stylesheet_directory' ) . '/assets/css/admin-style.css', false, '1.0.0' );
+    wp_enqueue_style( 'custom_wp_admin_css' );
 	}
 	add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
-
-
-
 /* Carrega Arquivos JS do tema */
 /* ----------------------------------------- */
-add_action( 'wp_print_scripts', 'bigo_load_scripts' );
+	add_action( 'wp_print_scripts', 'bigo_load_scripts' );
 
-function bigo_load_scripts(){
+	function bigo_load_scripts(){
 
-       if (!is_admin()){
-                  
-				// Desregistrando o jquery nativo e registrando o do CDN do Google.
-				// wp_deregister_script('jquery');
-				// wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2');
-				wp_enqueue_script('jquery');	
+    if (!is_admin()){
+              
+			// Desregistrando o jquery nativo e registrando o do CDN do Google.
+			// wp_deregister_script('jquery');
+			// wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2');
+			wp_enqueue_script('jquery');	
 
-				// Os demais js
-				wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets/js/bootstrap.min.js', array('jquery'));
+			// Os demais js
+			// wp_enqueue_script('smoothwheel', get_template_directory_uri(). '/assets/js/jquery.smoothwheel-ck.js', array('jquery'));
+			wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets/js/bootstrap.min.js', array('jquery'));
+			wp_enqueue_script('slick', get_template_directory_uri(). '/assets/slick/slick.min.js', array('jquery'));
+			wp_enqueue_script('codigo', get_template_directory_uri(). '/assets/js/codigo.js', array('jquery'));
+	  }
 
-				// Smooth Scrolling - https://github.com/fatlinesofcode/jquery.smoothwheel
-				// wp_enqueue_script('smoothwheel', get_template_directory_uri(). '/assets/js/jquery.smoothwheel-ck.js', array('jquery'));
-				wp_enqueue_script('codigo', get_template_directory_uri(). '/assets/js/codigo.js', array('jquery'));
-      }
+	}
 
-}
+/* Carrega Scripts/Styles para Lightbox */
+/* ----------------------------------------- */
+	function twentytwelve_add_lightbox() {
+	    wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/assets/lightbox/js/jquery.fancybox.pack.js', array( 'jquery' ), false, true );
+	    wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/assets/lightbox/js/lightbox.js', array( 'fancybox' ), false, true );
+	    wp_enqueue_style( 'lightbox-style', get_template_directory_uri() . '/assets/lightbox/css/jquery.fancybox.css' );
+	}
+	add_action( 'wp_enqueue_scripts', 'twentytwelve_add_lightbox' );
 
+
+/* Carrega Arquivos CSS do tema */
+/* ----------------------------------------- */
+	function bigo_load_css(){ 
+
+		// Carrega o arquivo em todas as páginas
+		wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/slick/slick.css' );
+		wp_enqueue_style( 'fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', false, '4.3.0');
+		// wp_enqueue_style( 'hover', get_template_directory_uri() . '/assets/css/hover.css' );
+
+	}
+	add_action('wp_enqueue_scripts', 'bigo_load_css');
 
 
 //Insere o arquivo CSS com seus estilos personalizados para a tela de login

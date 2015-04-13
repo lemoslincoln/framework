@@ -12,9 +12,9 @@
 ?>
 	<footer id="footer">
 		<section class="container">
-			<section class="col-xs-8">
-				<section id="copyright" class="row text-center">
-						<p> Copyright <?php echo date('Y') ?> - <?php bloginfo('name'); ?> - Alguns direitos reservados</p>
+			<section class="row">
+				<section class="col-sm-12">
+					<p> Copyright <?php echo date('Y') ?> - <?php bloginfo('name'); ?> - Todos direitos reservados</p>
 				</section>
 			</section>
 		</section>

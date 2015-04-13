@@ -2,7 +2,6 @@
 // Variables
 // --------------------------------------------------
 
-
 // Global values
 // --------------------------------------------------
 
@@ -18,60 +17,60 @@
 @font-pri: 'Open Sans Condensed', sans-serif;
 
 .font-mobile(@size, @font){
-    @media only screen and (max-width : @size) {
-        @font-size-mobile:        @font;
-        @font-size-large:         ceil(@font-size-mobile * 1.25); // ~12px
-        @font-size-small:         ceil(@font-size-mobile * 0.85); // ~8px
+  @media only screen and (max-width : @size) {
+    @font-size-mobile:        @font;
+    @font-size-large:         ceil(@font-size-mobile * 1.25); // ~12px
+    @font-size-small:         ceil(@font-size-mobile * 0.85); // ~8px
 
-        @font-size-h1:            floor(@font-size-mobile * 2.6); // ~26px
-        @font-size-h2:            floor(@font-size-mobile * 2.15); // ~21px
-        @font-size-h3:            ceil(@font-size-mobile * 1.7); // ~17px
-        @font-size-h4:            ceil(@font-size-mobile * 1.25); // ~12px
-        @font-size-h5:            @font-size-mobile;
-        @font-size-h6:            ceil(@font-size-mobile * 0.85); // ~8px
-        body {
-            font-size: @font-size-mobile;
-            h1 {font-size: @font-size-h1;}
-            h2 {font-size: @font-size-h2;}
-            h3 {font-size: @font-size-h3;}
-            h4 {font-size: @font-size-h4;}
-            h5 {font-size: @font-size-h5;}
-            h6 {font-size: @font-size-h6;}
-        }
+    @font-size-h1:            floor(@font-size-mobile * 2.6); // ~26px
+    @font-size-h2:            floor(@font-size-mobile * 2.15); // ~21px
+    @font-size-h3:            ceil(@font-size-mobile * 1.7); // ~17px
+    @font-size-h4:            ceil(@font-size-mobile * 1.25); // ~12px
+    @font-size-h5:            @font-size-mobile;
+    @font-size-h6:            ceil(@font-size-mobile * 0.85); // ~8px
+    body {
+        font-size: @font-size-mobile;
+        h1 {font-size: @font-size-h1;}
+        h2 {font-size: @font-size-h2;}
+        h3 {font-size: @font-size-h3;}
+        h4 {font-size: @font-size-h4;}
+        h5 {font-size: @font-size-h5;}
+        h6 {font-size: @font-size-h6;}
     }
+  }
 }
 
 .light() {
-    font-weight: 100;
+  font-weight: 100;
 }
 .bold() {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 // Transitions
 .transition(@prop, @time, @type){
-    -webkit-transition: @prop @time @type;
-    -moz-transition: @prop @time @type;
-    -o-transition: @prop @time @type;
-    transition: @prop @time @type;
+  -webkit-transition: @prop @time @type;
+  -moz-transition: @prop @time @type;
+  -o-transition: @prop @time @type;
+  transition: @prop @time @type;
 }
 
 // Border Radius
 .radius(@radius){
-    -webkit-border-radius: @radius @radius @radius @radius;
-    -moz-border-radius: @radius @radius @radius @radius;
-    -o-border-radius: @radius @radius @radius @radius;
-    border-radius: @radius @radius @radius @radius;
+  -webkit-border-radius: @radius @radius @radius @radius;
+  -moz-border-radius: @radius @radius @radius @radius;
+  -o-border-radius: @radius @radius @radius @radius;
+  border-radius: @radius @radius @radius @radius;
 }
 
 // Clearfix
 .clearfix{
-    &:before,
-    &:after{
-        content:'';
-        display: table;
-        clear: both;
-    }
+  &:before,
+  &:after{
+      content:'';
+      display: table;
+      clear: both;
+  }
 }
 
 // Opacity
@@ -85,8 +84,6 @@
 
 
 // Grays
-// -------------------------
-
 @gray-darker:            lighten(#000, 13.5%); // #222
 @gray-dark:              lighten(#000, 20%);   // #333
 @gray:                   lighten(#000, 33.5%); // #555
@@ -94,8 +91,6 @@
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
 // Brand colors
-// -------------------------
-
 @brand-primary:         #428bca;
 @brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
@@ -103,20 +98,14 @@
 @brand-info:            #5bc0de;
 
 // Scaffolding
-// -------------------------
-
 @body-bg:               #fff;
 @text-color:            @gray-dark;
 
 // Links
-// -------------------------
-
 @link-color:            @brand-primary;
 @link-hover-color:      darken(@link-color, 15%);
 
 // Typography
-// -------------------------
-
 @font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;

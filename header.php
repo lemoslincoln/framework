@@ -23,7 +23,6 @@
 <?php
 	if ( is_singular() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
-
 	wp_head();
 ?>
 </head>
@@ -39,20 +38,18 @@
 					
 					<section class="row">						
 						<nav id="navmenu" class="navbar navbar-default" role="navigation">
-						  <!-- Brand and toggle get grouped for better mobile display -->
 						  <div class="navbar-header">
 						    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu-retratil">
-						      <span class="sr-only">Toggle navigation</span>
+						      <span class="sr-only">Toggle navegação</span>
 						      <span class="icon-bar"></span>
 						      <span class="icon-bar"></span>
 						      <span class="icon-bar"></span>
 						    </button>
 						    <a class="navbar-brand visible-xs" href="#">Menu</a>
 						  </div>
-
-					    	<?php 
-					    		wp_nav_menu( array( 
-					    		'menu'              => 'primary',
+				    	<?php 
+				    		wp_nav_menu( array( 
+					    		'menu'              => 'principal',
 	    		        'theme_location'    => 'global',
 	    		        'depth'             => 2,
 	    		        'container'         => 'div',
@@ -60,10 +57,9 @@
 	    		        'menu_class'        => 'nav navbar-nav',
 	    		        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
 	    		        'walker'            => new wp_bootstrap_navwalker()
-					    		) ); 
-					    	?>		    
-						  </div><!-- /.navbar-collapse -->
-						</nav>
+				    		)); 
+				    	?>    
+						</nav><!-- /.navbar-collapse -->		
 					</section>
 				</section>
 			</section>

@@ -9,15 +9,19 @@
 
 get_header(); ?>
 
-
-
-				<h1><?php _e( 'Not Found', 'twentyten' ); ?></h1>
-				<p><?php _e( 'Apologies, but the page you requested could not be found. Perhaps searching will help.', 'twentyten' ); ?></p>
+	<section class="container">
+		<section class="row">
+			<section class="col-sm-12">
+				<h1><?php _e( 'Ops.', 'twentyten' ); ?></h1>
+				<p><?php _e( 'Acho que você se perdeu, digite abaixo o que procura ou volte para a página inicial.', 'twentyten' ); ?></p>
 				<?php get_search_form(); ?>
 
-	<script type="text/javascript">
-		// focus on search field after it has loaded
-		document.getElementById('s') && document.getElementById('s').focus();
-	</script>
+				<script type="text/javascript">
+					// focus on search field after it has loaded
+					document.getElementById('s') && document.getElementById('s').focus();
+				</script>
+			</section>
+		</section>
+	</section>
 
 <?php get_footer(); ?>

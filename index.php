@@ -14,14 +14,14 @@
  */
 
 get_header(); ?>
-
-			<?php
-			/* Run the loop to output the posts.
-			 * If you want to overload this in a child theme then include a file
-			 * called loop-index.php and that will be used instead.
-			 */
-			 get_template_part( 'loop', 'index' );
-			?>
-
-<?php get_sidebar(); ?>
+	<section class="container">
+		<section class="row">
+			<section class="col-sm-12">
+				<?php while( have_posts() ): the_post(); ?>
+				<?php the_title(); ?>
+				<?php endwhile; ?>
+				<?php wp_reset_query(); ?>
+			</section>
+		</section>
+	</section>
 <?php get_footer(); ?>

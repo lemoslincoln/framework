@@ -303,37 +303,54 @@ function of_get_option($name, $default = false) {
 /* ----------------------------------------- */
 	
 	function load_custom_wp_admin_style() {
-	        wp_register_style( 'custom_wp_admin_css', get_bloginfo( 'stylesheet_directory' ) . '/assets/css/admin-style.css', false, '1.0.0' );
-	        wp_enqueue_style( 'custom_wp_admin_css' );
+    wp_register_style( 'custom_wp_admin_css', get_bloginfo( 'stylesheet_directory' ) . '/assets/css/admin-style.css', false, '1.0.0' );
+    wp_enqueue_style( 'custom_wp_admin_css' );
 	}
 	add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
-
-
-
 /* Carrega Arquivos JS do tema */
 /* ----------------------------------------- */
-add_action( 'wp_print_scripts', 'bigo_load_scripts' );
+	add_action( 'wp_print_scripts', 'bigo_load_scripts' );
 
-function bigo_load_scripts(){
+	function bigo_load_scripts(){
 
-       if (!is_admin()){
-                  
-				// Desregistrando o jquery nativo e registrando o do CDN do Google.
-				// wp_deregister_script('jquery');
-				// wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2');
-				wp_enqueue_script('jquery');	
+    if (!is_admin()){
+              
+			// Desregistrando o jquery nativo e registrando o do CDN do Google.
+			// wp_deregister_script('jquery');
+			// wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2');
+			wp_enqueue_script('jquery');	
 
-				// Os demais js
-				wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets/js/bootstrap.min.js', array('jquery'));
+			// Os demais js
+			// wp_enqueue_script('smoothwheel', get_template_directory_uri(). '/assets/js/jquery.smoothwheel-ck.js', array('jquery'));
+			wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets/js/bootstrap.min.js', array('jquery'));
+			wp_enqueue_script('slick', get_template_directory_uri(). '/assets/slick/slick.min.js', array('jquery'));
+			wp_enqueue_script('codigo', get_template_directory_uri(). '/assets/js/codigo.js', array('jquery'));
+	  }
 
-				// Smooth Scrolling - https://github.com/fatlinesofcode/jquery.smoothwheel
-				// wp_enqueue_script('smoothwheel', get_template_directory_uri(). '/assets/js/jquery.smoothwheel-ck.js', array('jquery'));
-				wp_enqueue_script('codigo', get_template_directory_uri(). '/assets/js/codigo.js', array('jquery'));
-      }
+	}
 
-}
+/* Carrega Scripts/Styles para Lightbox */
+/* ----------------------------------------- */
+	function twentytwelve_add_lightbox() {
+	    wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/assets/lightbox/js/jquery.fancybox.pack.js', array( 'jquery' ), false, true );
+	    wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/assets/lightbox/js/lightbox.js', array( 'fancybox' ), false, true );
+	    wp_enqueue_style( 'lightbox-style', get_template_directory_uri() . '/assets/lightbox/css/jquery.fancybox.css' );
+	}
+	add_action( 'wp_enqueue_scripts', 'twentytwelve_add_lightbox' );
 
+
+/* Carrega Arquivos CSS do tema */
+/* ----------------------------------------- */
+	function bigo_load_css(){ 
+
+		// Carrega o arquivo em todas as páginas
+		wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/slick/slick.css' );
+		wp_enqueue_style( 'fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', false, '4.3.0');
+		// wp_enqueue_style( 'hover', get_template_directory_uri() . '/assets/css/hover.css' );
+
+	}
+	add_action('wp_enqueue_scripts', 'bigo_load_css');
 
 
 //Insere o arquivo CSS com seus estilos personalizados para a tela de login
@@ -355,34 +372,217 @@ function wpmidia_custom_wp_login_title() {
 }
 
 
-
-
-
 /* Adiciona o ID do usuário no body-class */
 /* ----------------------------------------- */
-
 function id_usuario_body_class( $classes ) {
-    global $current_user;
-        $classes .= ' user-' . $current_user->ID;
-    return trim( $classes );
+  global $current_user;
+    $classes .= ' user-' . $current_user->ID;
+  return trim( $classes );
 }
 add_filter( 'admin_body_class', 'id_usuario_body_class' );
 
 
-
 /* Adiciona editor se usuário for editor no body-class */
 /* --------------------------------------------------- */
-
 function role_user_body_class( $classes ) {
-		if( current_user_can('editor') ) { $classes .= ' editor'; }
-    return trim( $classes );
+	if( current_user_can('editor') ) { $classes .= ' editor'; }
+  return trim( $classes );
 }
 add_filter( 'admin_body_class', 'role_user_body_class' );
 
-
-
 function bigo_get_images($size = 'thumbnail') {
-    global $post;
-    return get_children( array('post_parent' => $post->ID, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order') );
+  global $post;
+  return get_children( array('post_parent' => $post->ID, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order') );
 }
 
+/* Cria opções de páginas */
+/* --------------------------------------------------- */
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();	
+}
+/* Cria campo personalizado do logotipo */
+/* --------------------------------------------------- */
+if( function_exists('register_field_group') ):
+
+register_field_group(array (
+	'key' => 'group_552c19fc1dd7c',
+	'title' => 'Logotipo',
+	'fields' => array (
+		array (
+			'key' => 'field_552c1a01a03f6',
+			'label' => 'Opções do site',
+			'name' => 'logotipo',
+			'prefix' => '',
+			'type' => 'image',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
+			'preview_size' => 'full',
+			'library' => 'all',
+			'min_width' => '',
+			'min_height' => '',
+			'min_size' => '',
+			'max_width' => '',
+			'max_height' => '',
+			'max_size' => '',
+			'mime_types' => '',
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'options_page',
+				'operator' => '==',
+				'value' => 'acf-options',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+));
+
+endif;
+
+
+/* Cria repeater do banner principal para slider */
+if( function_exists('register_field_group') ):
+register_field_group(array (
+	'key' => 'group_552c0e6260dfe',
+	'title' => 'Banner',
+	'fields' => array (
+		array (
+			'key' => 'field_552c0e7603fec',
+			'label' => 'Slider Principal',
+			'name' => 'slider_principal',
+			'prefix' => '',
+			'type' => 'repeater',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'min' => '',
+			'max' => '',
+			'layout' => 'block',
+			'button_label' => 'Adicionar Novo',
+			'sub_fields' => array (
+				array (
+					'key' => 'field_552c0f8e03fed',
+					'label' => 'Imagem',
+					'name' => 'imagem_slider',
+					'prefix' => '',
+					'type' => 'image',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => 50,
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'preview_size' => 'banner-topo',
+					'library' => 'all',
+					'min_width' => '',
+					'min_height' => '',
+					'min_size' => '',
+					'max_width' => '',
+					'max_height' => '',
+					'max_size' => '',
+					'mime_types' => '',
+				),
+				array (
+					'key' => 'field_552c104903fef',
+					'label' => 'Descrição',
+					'name' => 'descricao_slider',
+					'prefix' => '',
+					'type' => 'textarea',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => 50,
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'maxlength' => '',
+					'rows' => 4,
+					'new_lines' => '',
+					'readonly' => 0,
+					'disabled' => 0,
+				),
+				array (
+					'key' => 'field_552c102a03fee',
+					'label' => 'Título',
+					'name' => 'titulo_slider',
+					'prefix' => '',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => 50,
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+					'readonly' => 0,
+					'disabled' => 0,
+				),
+				array (
+					'key' => 'field_552c106103ff0',
+					'label' => 'Link',
+					'name' => 'link_slider',
+					'prefix' => '',
+					'type' => 'url',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => 50,
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+				),
+			),
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'options_page',
+				'operator' => '==',
+				'value' => 'acf-options',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+));
+
+endif;

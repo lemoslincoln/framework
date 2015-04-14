@@ -15,5 +15,4 @@ require_once ('functions/opcionais.php');
 // Define as funções de menu
 require_once ('functions/wp_bootstrap_navwalker.php');
 
-
 // require_once ('functions/scripts.php');  

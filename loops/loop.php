@@ -21,14 +21,14 @@
 
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if ( $wp_query->max_num_pages > 1 ) : ?>
-		<?php next_posts_link( __( '&larr; Older posts', 'twentyten' ) ); ?>
-		<?php previous_posts_link( __( 'Newer posts &rarr;', 'twentyten' ) ); ?>
+		<?php next_posts_link( __( '&larr; Anterior', 'twentyten' ) ); ?>
+		<?php previous_posts_link( __( 'Próximo &rarr;', 'twentyten' ) ); ?>
 <?php endif; ?>
 
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
-		<h1><?php _e( 'Not Found', 'twentyten' ); ?></h1>
-		<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyten' ); ?></p>
+		<h1><?php _e( 'Nada encontrado.', 'twentyten' ); ?></h1>
+		<p><?php _e( 'Desculpas, mas nenhum resultado foi encontrado para o arquivo solicitado. Talvez a pesquisa vai ajudar a encontrar um post relacionado.', 'twentyten' ); ?></p>
 		<?php get_search_form(); ?>
 
 <?php endif; ?>
@@ -53,7 +53,7 @@
 <?php /* How to display posts of the Gallery format. The gallery category is the old way. */ ?>
 
 	<?php if ( ( function_exists( 'get_post_format' ) && 'gallery' == get_post_format( $post->ID ) ) || in_category( _x( 'gallery', 'gallery category slug', 'twentyten' ) ) ) : ?>
-			<h2><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<h2><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Link permanete para %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
 			<?php twentyten_posted_on(); ?>
 			
@@ -68,7 +68,7 @@
 						$image_img_tag = wp_get_attachment_image( $image->ID, 'thumbnail' );
 				?>
 						<a href="<?php the_permalink(); ?>"><?php echo $image_img_tag; ?></a>
-						<p><?php printf( _n( 'This gallery contains <a %1$s>%2$s photo</a>.', 'This gallery contains <a %1$s>%2$s photos</a>.', $total_images, 'twentyten' ),
+						<p><?php printf( _n( 'Esta galeria contém <a %1$s>%2$s foto</a>.', 'Esta galeria contém <a %1$s>%2$s fotos</a>.', $total_images, 'twentyten' ),
 								'href="' . get_permalink() . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark"',
 								number_format_i18n( $total_images )
 							); ?></p>
@@ -76,13 +76,13 @@
 						<?php the_excerpt(); ?>
 <?php endif; ?>
 <?php if ( function_exists( 'get_post_format' ) && 'gallery' == get_post_format( $post->ID ) ) : ?>
-				<a href="<?php echo get_post_format_link( 'gallery' ); ?>" title="<?php esc_attr_e( 'View Galleries', 'twentyten' ); ?>"><?php _e( 'More Galleries', 'twentyten' ); ?></a>
+				<a href="<?php echo get_post_format_link( 'gallery' ); ?>" title="<?php esc_attr_e( 'Ver galerias', 'twentyten' ); ?>"><?php _e( 'Mais galerias', 'twentyten' ); ?></a>
 				|
 				<?php elseif ( in_category( _x( 'gallery', 'gallery category slug', 'twentyten' ) ) ) : ?>
 				<a href="<?php echo get_term_link( _x( 'gallery', 'gallery category slug', 'twentyten' ), 'category' ); ?>" title="<?php esc_attr_e( 'View posts in the Gallery category', 'twentyten' ); ?>"><?php _e( 'More Galleries', 'twentyten' ); ?></a>
 				|
 				<?php endif; ?>
-			<?php comments_popup_link( __( 'Leave a comment', 'twentyten' ), __( '1 Comment', 'twentyten' ), __( '% Comments', 'twentyten' ) ); ?>
+			<?php comments_popup_link( __( 'Deixar um comentário', 'twentyten' ), __( '1 Comentário', 'twentyten' ), __( '% Comentários', 'twentyten' ) ); ?>
 				<?php edit_post_link( __( 'Edit', 'twentyten' ), '|', '' ); ?>
 
 <?php /* How to display posts of the Aside format. The asides category is the old way. */ ?>
@@ -91,7 +91,7 @@
 		<?php if ( is_archive() || is_search() ) : // Display excerpts for archives and search. ?>
 			<?php the_excerpt(); ?>
 		<?php else : ?>
-			<?php the_content( __( 'Continue reading &rarr;', 'twentyten' ) ); ?>
+			<?php the_content( __( 'Continar lendo &rarr;', 'twentyten' ) ); ?>
 		
 		<?php endif; ?>
 

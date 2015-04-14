@@ -2,10 +2,6 @@
 // Adiciona a tag og:image no head
 add_action( 'wp_head', 'insert_image_src_rel_in_head', 5 );
 
-
-
-
-
 function insert_image_src_rel_in_head() {
     global $post;
 

@@ -325,6 +325,7 @@ function of_get_option($name, $default = false) {
 			// wp_enqueue_script('smoothwheel', get_template_directory_uri(). '/assets/js/jquery.smoothwheel-ck.js', array('jquery'));
 			wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets/js/bootstrap.min.js', array('jquery'));
 			wp_enqueue_script('slick', get_template_directory_uri(). '/assets/slick/slick.min.js', array('jquery'));
+			wp_enqueue_script('acf-maps', get_template_directory_uri(). '/assets/slick/maps.js', array('jquery'));
 			wp_enqueue_script('codigo', get_template_directory_uri(). '/assets/js/codigo.js', array('jquery'));
 	  }
 
@@ -346,6 +347,7 @@ function of_get_option($name, $default = false) {
 
 		// Carrega o arquivo em todas as páginas
 		wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/slick/slick.css' );
+		wp_enqueue_style( 'slick-theme', get_template_directory_uri() . '/assets/slick/slick-theme.css' );
 		wp_enqueue_style( 'fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', false, '4.3.0');
 		// wp_enqueue_style( 'hover', get_template_directory_uri() . '/assets/css/hover.css' );
 

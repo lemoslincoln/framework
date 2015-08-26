@@ -5,18 +5,7 @@
  *
  * @since Bigo 2.0
  */
-function excerpt($limit) {
-  $excerpt = explode(' ', get_the_excerpt(), $limit);
-  if (count($excerpt)>=$limit) {
-    array_pop($excerpt);
-    $excerpt = implode(" ",$excerpt).'...';
-  } else {
-    $excerpt = implode(" ",$excerpt);
-  } 
-  $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
-  return $excerpt;
-}
-
+/* Modo de uso <?php echo content(10); ?> */
 function content($limit) {
   $content = explode(' ', get_the_content(), $limit);
   if (count($content)>=$limit) {
@@ -29,4 +18,11 @@ function content($limit) {
   $content = apply_filters('the_content', $content); 
   $content = str_replace(']]>', ']]&gt;', $content);
   return $content;
+}
+
+/* Modo de uso <section id="topo" <?php thumbnail_bg( 'paginas-destaque' ); ?>> */
+function thumbnail_bg ( $tamanho = 'paginas-destaque' ) {
+  global $post;
+    $get_post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $tamanho, false, '' );
+    echo 'style="background: url('.$get_post_thumbnail[0].' ) center top;"';
 }

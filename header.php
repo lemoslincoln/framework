@@ -20,6 +20,8 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link href="<?php echo get_template_directory_uri()	?>/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+<!-- google maps -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <?php
 	if ( is_singular() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
@@ -35,7 +37,7 @@
 
 				<section class="col-sm-3">
 					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-						<img src="<?php $image = get_field('logotipo', 'option'); echo $image['url']; ?>" />
+						<img src="<?php $image = get_field('logotipo', 'option'); echo $image['url']; ?>" clas="logotipo img-responsive"/>
 					</a>
 				</section>
 

@@ -39,7 +39,7 @@
 					</a>
 				</section>
 
-				<section class="col-sm-9">						
+				<section class="col-sm-7">						
 					<nav id="navmenu" class="navbar navbar-default" role="navigation">
 					  <div class="navbar-header">
 					    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu-retratil">
@@ -65,6 +65,19 @@
 					</nav><!-- /.navbar-collapse -->		
 				</section>
 				
+				<section class="col-sm-2">
+					<?php if( have_rows('sociais_info','option') ): ?>
+						<ul class="redes-sociais">
+							<?php  while ( have_rows('sociais_info','option') ) : the_row(); ?>
+								<li>
+									<a href="<?php the_sub_field('url_info'); ?>" target="_blank">
+										<?php the_sub_field('icone_info'); ?>
+									</a>
+								</li>
+							<?php endwhile; ?>
+						</ul>
+					<?php endif; ?>
+				</section>
 			</section>
 		</section>
 	</header>

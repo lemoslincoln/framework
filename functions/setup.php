@@ -325,7 +325,7 @@ function of_get_option($name, $default = false) {
 			// wp_enqueue_script('smoothwheel', get_template_directory_uri(). '/assets/js/jquery.smoothwheel-ck.js', array('jquery'));
 			wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets/js/bootstrap.min.js', array('jquery'));
 			wp_enqueue_script('slick', get_template_directory_uri(). '/assets/slick/slick.min.js', array('jquery'));
-			wp_enqueue_script('acf-maps', get_template_directory_uri(). '/assets/slick/maps.js', array('jquery'));
+			wp_enqueue_script('acf-maps', get_template_directory_uri(). '/assets/js/maps.js', array('jquery'));
 			wp_enqueue_script('codigo', get_template_directory_uri(). '/assets/js/codigo.js', array('jquery'));
 	  }
 

@@ -37,7 +37,7 @@
 
 				<section class="col-sm-3">
 					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-						<img src="<?php $image = get_field('logotipo', 'option'); echo $image['url']; ?>" clas="logotipo img-responsive"/>
+						<img src="<?php $image = get_field('logotipo', 'option'); echo $image['url']; ?>" class="logotipo img-responsive"/>
 					</a>
 				</section>
 

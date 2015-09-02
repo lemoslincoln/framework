@@ -14,7 +14,7 @@
 		<section class="container">
 			<section class="row">
 				<section class="col-sm-12">
-					<p> Copyright <?php echo date('Y') ?> - <?php bloginfo('name'); ?> - Todos direitos reservados</p>
+					<p><i class="fa fa-copyright"></i> <?php echo date('Y') ?> - <?php bloginfo('name'); ?> - Todos direitos reservados</p>
 				</section>
 			</section>
 		</section>

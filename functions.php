@@ -19,4 +19,4 @@ require_once ('functions/wp_bootstrap_navwalker.php');
 require_once ('functions/scripts.php');
 
 // Registra custom posts
-require_once ('includes/cpt-arquivos.php');
+// require_once ('includes/cpt-arquivos.php');

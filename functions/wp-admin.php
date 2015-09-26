@@ -71,17 +71,6 @@ function id_usuario_body_class( $classes ) {
 add_filter( 'admin_body_class', 'id_usuario_body_class' );
 
 
-
-/* Adiciona o ID do usuário no body-class */
-/* ----------------------------------------- */
-function id_usuario_body_class( $classes ) {
-  global $current_user;
-    $classes .= ' user-' . $current_user->ID;
-  return trim( $classes );
-}
-add_filter( 'admin_body_class', 'id_usuario_body_class' );
-
-
 /* Cria página "Opções" para o ACF */
 /* ----------------------------------------- */
   $optionsPage = array(
@@ -104,7 +93,7 @@ add_filter( 'admin_body_class', 'id_usuario_body_class' );
   WARNING: if two menu items use the same position attribute, one of the items may be overwritten so that only one item displays!
   Risk of conflict can be reduced by using decimal instead of integer values, e.g. '63.3' instead of 63 (must use quotes).
   Defaults to bottom of utility menu items */
-  'position' => 20,
+  'position' => 9,
   
   /* (string) The slug of another WP admin page. if set, this will become a child page. */
   'parent_slug' => '',

@@ -26,3 +26,12 @@ function thumbnail_bg ( $tamanho = 'paginas-destaque' ) {
     $get_post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $tamanho, false, '' );
     echo 'style="background: url('.$get_post_thumbnail[0].' ) center top;"';
 }
+
+function mascara_string($mascara,$string) {
+   $string = str_replace(" ","",$string);
+   for($i=0;$i<strlen($string);$i++)
+   {
+      $mascara[strpos($mascara,"#")] = $string[$i];
+   }
+   return $mascara;
+}

@@ -1,11 +1,11 @@
 <?php
 /**
- * The template for displaying all pages.
+ * Template Name: Página c/ Sidebar
  *
- * This is the template that displays all pages by default.
- * Please note that this is the wordpress construct of pages
- * and that other 'pages' on your wordpress site will use a
- * different template.
+ * A custom page template without sidebar.
+ *
+ * The "Template Name:" bit above allows this to be selectable
+ * from a dropdown menu on the edit page screen.
  *
  * @package WordPress
  * @subpackage Starkers
@@ -13,8 +13,7 @@
  */
 
 get_header(); ?>
-
-<section id="content" class="container">
+	<section id="content" class="container">
 		<div class="row">
 			<div class="col-sm-8">
 				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>

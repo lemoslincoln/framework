@@ -14,6 +14,39 @@
  */
 
 get_header(); ?>
+	<!-- banner -->
+	<section class="container">
+		<section class="row">
+			<?php if( have_rows('slider_principal','option') ): ?>
+				<section class="banner">
+					<?php  while ( have_rows('slider_principal','option') ) : the_row();
+					
+					  $image = get_sub_field('imagem_slider');
+					  $url = $image['url'];
+					
+					  $size = 'banner-topo';
+						$thumb = $image['sizes'][ $size ];
+						$width = $image['sizes'][ $size . '-width' ];
+						$height = $image['sizes'][ $size . '-height' ];
+					?>
+					
+						<div>
+							<section class="banner-mask">
+								<h4><?php the_sub_field('titulo_slider'); ?></h4>
+								<p><?php the_sub_field('descricao_slider'); ?></p>
+								<a href="<?php the_sub_field('link_slider'); ?>">Leia mais...</a>
+							</section>
+							
+							<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" class="img-responsive" />
+						</div>
+					  
+					<?php endwhile; ?>
+				</section>
+			<?php endif; ?>
+		</section>
+	</section>
+	<!-- banner end -->
+	
 	<section class="container">
 		<section class="row">
 			<section class="col-sm-12">

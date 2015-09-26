@@ -20,6 +20,8 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link href="<?php echo get_template_directory_uri()	?>/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+<!-- google maps -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <?php
 	if ( is_singular() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
@@ -35,11 +37,11 @@
 
 				<section class="col-sm-3">
 					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-						<img src="<?php $image = get_field('logotipo', 'option'); echo $image['url']; ?>" />
+						<img src="<?php $image = get_field('logotipo', 'option'); echo $image['url']; ?>" class="logotipo img-responsive"/>
 					</a>
 				</section>
 
-				<section class="col-sm-9">						
+				<section class="col-sm-7">						
 					<nav id="navmenu" class="navbar navbar-default" role="navigation">
 					  <div class="navbar-header">
 					    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu-retratil">
@@ -65,6 +67,19 @@
 					</nav><!-- /.navbar-collapse -->		
 				</section>
 				
+				<section class="col-sm-2">
+					<?php if( have_rows('sociais_info','option') ): ?>
+						<ul class="redes-sociais">
+							<?php  while ( have_rows('sociais_info','option') ) : the_row(); ?>
+								<li>
+									<a href="<?php the_sub_field('url_info'); ?>" target="_blank">
+										<?php the_sub_field('icone_info'); ?>
+									</a>
+								</li>
+							<?php endwhile; ?>
+						</ul>
+					<?php endif; ?>
+				</section>
 			</section>
 		</section>
 	</header>

@@ -21,4 +21,7 @@ form#your-profile h3:nth-of-type(2) {
 form#your-profile div.wpcf-group-area_foto h3 {
   display: none;
 }
+.fa-live-preview {
+	display: none;
+}
 /* ----------------------------------------- Ajustes Perfil */

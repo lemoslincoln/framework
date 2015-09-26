@@ -22,11 +22,39 @@ p {
 	font-family: @font-pri;
 	margin: 0;
 }
-@media only screen and (max-width : 768px) { }
-@media only screen and (max-width : 480px) { }
-
-.fonte-mobile(768px, 10px);
-/* Comentários */
-/* ----------------------------------------------------- */
-
-/* ----------------------------------------- Comentários */
+a {
+	.transition(all 300ms ease-in-out);
+	text-decoration: none !important;
+}
+.acf-map {
+  width: 100%;
+  height: 400px;
+}
+/* header */
+/* ----------------------------------------- */
+header#header {
+	nav#navmenu {
+    .navbar-header {
+      button {
+        span {
+          &.icon-bar {}
+        }
+      }
+      a {}
+    }
+    .navbar-collapse {
+      ul {
+        li {
+          a {}
+          &:hover,
+          &.active {
+            a {
+              
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* ----------------------------------------- header */		

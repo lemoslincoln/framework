@@ -8,8 +8,8 @@
  */
 if ( is_active_sidebar( 'sidebar-principal' ) ) :
 
-	echo '<section id="sidebar">';
-		dynamic_sidebar( 'secondary-widget-area' );
-	echo '</section>';
+	echo '<aside id="sidebar" class="col-sm-4">';
+		dynamic_sidebar( 'sidebar-principal' );
+	echo '</aside><!-- #sidebar col-sm-4 -->';
 
 endif;

@@ -11,13 +11,9 @@
  */
 ?>
 	<footer id="footer">
-		<section class="container">
-			<section class="row">
-				<section class="col-sm-12">
-					<p><i class="fa fa-copyright"></i> <?php echo date('Y') ?> - <?php bloginfo('name'); ?> - Todos direitos reservados</p>
-				</section>
-			</section>
-		</section>
+		<div class="container">
+			<p> Copyright <?php echo date('Y') ?> - <?php bloginfo('name'); ?> - Todos direitos reservados</p>
+		</div>
 	</footer>
 
 <?php wp_footer(); ?>

@@ -14,13 +14,29 @@
 
 get_header(); ?>
 
-			<?php
-			/* Run the loop to output the page.
-			 * If you want to overload this in a child theme then include a file
-			 * called loop-page.php and that will be used instead.
-			 */
-			get_template_part( 'loops/loop', 'page' );
-			?>
+<section id="content" class="container">
+		<div class="row">
+			<div class="col-sm-8">
+				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+					<article <?php post_class('container' ); ?> >
+						<header>
+							<h1><?php the_title(); ?></h1>
+						</header>
+						
+						<section>
+							<?php the_content(); ?>
+						</section>
+						
+						<footer>
+							<?php comments_template( '', true ); ?>
+						</footer>
 
-<?php get_sidebar(); ?>
+					</article>
+				<?php endwhile; // end of the loop. ?>
+			</div>
+
+			<?php get_sidebar(); ?>
+			
+		</div> <!-- row -->
+	</section> <!-- #content -->
 <?php get_footer(); ?>

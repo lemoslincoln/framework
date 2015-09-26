@@ -15,7 +15,7 @@
 
 get_header(); ?>
 	<!-- banner -->
-	<section class="container">
+	<article class="container" role="banner">
 		<section class="row">
 			<?php if( have_rows('slider_principal','option') ): ?>
 				<section class="banner">
@@ -44,14 +44,14 @@ get_header(); ?>
 				</section>
 			<?php endif; ?>
 		</section>
-	</section>
+	</article>
 	<!-- banner end -->
 	
 	<section class="container">
 		<section class="row">
 			<section class="col-sm-12">
 				<?php while( have_posts() ): the_post(); ?>
-				<?php the_title(); ?>
+					<?php the_title(); ?>
 				<?php endwhile; ?>
 				<?php wp_reset_query(); ?>
 			</section>

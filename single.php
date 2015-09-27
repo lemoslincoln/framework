@@ -15,7 +15,6 @@ get_header(); ?>
 					<article <?php post_class('container' ); ?> >
 						<header>
 							<h1><?php the_title(); ?></h1>
-							<?php twentyten_posted_on(); ?>
 						</header>
 						
 						<section>

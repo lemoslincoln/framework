@@ -11,62 +11,110 @@
  * @subpackage Starkers
  * @since Starkers 3.1
  */
-?>
 
-<?php if ( post_password_required() ) : ?>
-				<p><?php _e( 'This post is password protected. Enter the password to view any comments.', 'twentyten' ); ?></p>
-<?php
+	
+	if ( post_password_required() ) : 
+		echo '<p>Insira a senha para visualizar os comentários.</p>';
+
 		/* Stop the rest of comments.php from being processed,
 		 * but don't kill the script entirely -- we still have
 		 * to fully load the template.
 		 */
 		return;
 	endif;
-?>
 
-<?php
-	// You can start editing here -- including this comment!
-?>
 
-<?php if ( have_comments() ) : ?>
+	if ( have_comments() ) : ?>
 			<!-- STARKERS NOTE: The following h3 id is left intact so that comments can be referenced on the page -->
 			<h3 id="comments-title"><?php
-			printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'twentyten' ),
+			printf( _n( '01 Comentário', '%1$s Comentários', get_comments_number(), 'twentyten' ),
 			number_format_i18n( get_comments_number() ), '' . get_the_title() . '' );
 			?></h3>
 
-<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-				<?php previous_comments_link( __( '&larr; Older Comments', 'twentyten' ) ); ?>
-				<?php next_comments_link( __( 'Newer Comments &rarr;', 'twentyten' ) ); ?>
-<?php endif; // check for comment navigation ?>
+<?php 
+			// Are there comments to navigate through?
+			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : 
+				
+				previous_comments_link( __( '&larr; Comentários Anteriores', 'twentyten' ) );
+				next_comments_link( __( 'Próximos Comentários &rarr;', 'twentyten' ) );
 
-			<ol>
-				<?php
-					/* Loop through and list the comments. Tell wp_list_comments()
-					 * to use twentyten_comment() to format the comments.
-					 * If you want to overload this in a child theme then you can
-					 * define twentyten_comment() and that will be used instead.
-					 * See twentyten_comment() in twentyten/functions.php for more.
-					 */
-					wp_list_comments( array( 'callback' => 'twentyten_comment' ) );
-				?>
-			</ol>
+			endif;
 
-<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-				<?php previous_comments_link( __( '&larr; Older Comments', 'twentyten' ) ); ?>
-				<?php next_comments_link( __( 'Newer Comments &rarr;', 'twentyten' ) ); ?>
-<?php endif; // check for comment navigation ?>
+			echo "<ol>" . wp_list_comments( array( 'callback' => 'twentyten_comment' ) ) . "</ol>";
+			
+			// Are there comments to navigate through? 
+			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : 
+				previous_comments_link( __( '&larr; Older Comments', 'twentyten' ) );
+				next_comments_link( __( 'Newer Comments &rarr;', 'twentyten' ) ); 
+			endif; // check for comment navigation 
 
-<?php else : // or, if we don't have comments:
+	else : // or, if we don't have comments:
 
-	/* If there are no comments and comments are closed,
-	 * let's leave a little note, shall we?
-	 */
-	if ( ! comments_open() ) :
-?>
-	<p><?php _e( 'Comments are closed.', 'twentyten' ); ?></p>
-<?php endif; // end ! comments_open() ?>
+		/* If there are no comments and comments are closed,
+		 * let's leave a little note, shall we?
+		 */
+		if ( ! comments_open() ) :
+			// Exibe ou não exibe a mensagem de comentários fechados
+			echo '<p>Comentários fechados</p>';
+		endif; // end ! comments_open()
 
-<?php endif; // end have_comments() ?>
+	endif; // end have_comments() 
 
-<?php comment_form(); ?>
+
+	$fields =  array(
+
+	  'author' =>
+	    '<p class="comment-form-author"><label class="sr-only" for="author">Nome</label> ' .
+	    ( $req ? '<span class="required">*</span>' : '' ) .
+	    '<input id="author" name="author" placeholder="Nome" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+	    '" ' . $aria_req . ' /></p>',
+
+	  'email' =>
+	    '<p class="comment-form-email"><label class="sr-only" for="email">Email</label> ' .
+	    ( $req ? '<span class="required">*</span>' : '' ) .
+	    '<input id="email" name="email" type="text" placeholder="Email" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+	    '" size="30"' . $aria_req . ' /></p>',
+
+	  'url' =>
+	    '<p class="comment-form-url"><label class="sr-only" for="url">Site</label>' .
+	    '<input id="url" name="url" type="text" placeholder="Site"  value="' . esc_attr( $commenter['comment_author_url'] ) .
+	    '" size="30" /></p>',
+	);
+
+
+	$args = array(
+	  'id_form'           => 'commentform',
+	  'id_submit'         => 'submit',
+	  'class_submit'      => 'submit',
+	  'name_submit'       => 'submit',
+	  'title_reply'       => __( 'Deixe um comentário' ),
+	  'title_reply_to'    => __( 'Responda a %s' ),
+	  'cancel_reply_link' => __( 'Cancelar resposta' ),
+	  'label_submit'      => __( 'Postar comentário' ),
+	  'format'            => 'xhtml',
+
+	  'comment_field' =>  '<p class="comment-form-comment"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun' ) .
+	    '</label><textarea id="comment" name="comment" cols="45" rows="4" aria-required="true">' .
+	    '</textarea></p>',
+
+	  'must_log_in' => '<p class="must-log-in">' .
+	    sprintf(
+	      __( 'Você precisa fazer <a href="%s">login</a> para postar um comentário.' ),
+	      wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
+	    ) . '</p>',
+
+	  'logged_in_as' => '<p class="logged-in-as">' .
+	    sprintf(
+	    __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ),
+	      admin_url( 'profile.php' ),
+	      $user_identity,
+	      wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
+	    ) . '</p>',
+
+	  'comment_notes_before' => '',
+	  'comment_notes_after' => '',
+
+	  'fields' => apply_filters( 'comment_form_default_fields', $fields ),
+	);
+
+	comment_form($args); ?>

@@ -171,64 +171,6 @@ function twentyten_remove_gallery_css( $css ) {
 }
 add_filter( 'gallery_style', 'twentyten_remove_gallery_css' );
 
-if ( ! function_exists( 'twentyten_comment' ) ) :
-/**
- * Template for comments and pingbacks.
- *
- * To override this walker in a child theme without modifying the comments template
- * simply create your own twentyten_comment(), and that function will be used instead.
- *
- * Used as a callback by wp_list_comments() for displaying the comments.
- *
- * @since Twenty Ten 1.0
- */
-function twentyten_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
-	switch ( $comment->comment_type ) :
-		case '' :
-	?>
-
-	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<div id="comment-<?php comment_ID(); ?>">
-		<div class="comment-author vcard">
-			<?php echo get_avatar( $comment, 64 ); ?>
-		</div><!-- .comment-author .vcard -->
-		<div class="boxtextocomentario">
-			<?php if ( $comment->comment_approved == '0' ) : ?>
-				<em><?php _e( 'Seu comentário esta aguardando aprovação.', 'twentyten' ); ?></em>
-				<br />
-			<?php endif; ?>
-			<?php printf( __( '%s', 'twentyten' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
-			
-			<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-				<?php
-					/* translators: 1: date, 2: time */
-					printf( __( '%1$s at %2$s', 'twentyten' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 'twentyten' ), ' ' );
-				?>
-			</div><!-- .comment-meta .commentmetadata -->
-	
-			<div class="comment-body"><?php comment_text(); ?></div>
-			<!--
-			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div><!-- .reply -->
-		
-		</div> <!-- .boxtextocomentario -->
-		<br class="clear" />
-	</div><!-- #comment-##  -->
-
-	<?php
-			break;
-		case 'pingback'  :
-		case 'trackback' :
-	?>
-	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'twentyten' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'twentyten'), ' ' ); ?></p>
-	<?php
-			break;
-	endswitch;
-}
-endif;
 
 /**
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.

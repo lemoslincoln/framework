@@ -40,7 +40,9 @@
 
 			endif;
 
-			echo "<ol>" . wp_list_comments( array( 'callback' => 'twentyten_comment' ) ) . "</ol>";
+			echo "<ol>";
+				wp_list_comments( array( 'callback' => 'twentyten_comment' ) );
+			echo "</ol>";
 			
 			// Are there comments to navigate through? 
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : 

@@ -3,7 +3,7 @@ Angolanos Framework
 
 Authors: 
 lemoslincoln@gmail.com
-valdeirjr@gmail.com
+vjrjunior@gmail.com
 fale@brunowp.com.br 
 
 

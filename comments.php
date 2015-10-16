@@ -42,7 +42,7 @@
 
 			echo "<ol>";				
 				wp_list_comments('avatar_size=60');
-			echo "</ol>"
+			echo "</ol>";
 			
 			// Are there comments to navigate through? 
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : 
@@ -62,6 +62,9 @@
 
 	endif; // end have_comments() 
 
+	$commenter = wp_get_current_commenter();
+	$req = get_option( 'require_name_email' );
+	$aria_req = ( $req ? " aria-required='true'" : '' );
 
 	$fields =  array(
 

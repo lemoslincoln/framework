@@ -1,46 +1,20 @@
-//
-// Variables
-// --------------------------------------------------
-.h1() { font-size: @font-size-h1; }
-.h2() { font-size: @font-size-h2; }
-.h3() { font-size: @font-size-h3; }
-.h4() { font-size: @font-size-h4; }
-.h5() { font-size: @font-size-h5; }
-.h6() { font-size: @font-size-h6; }
-
-.light()   { font-weight: 100;}
-.normal()  { font-weight: 400;}
-.bold()    { font-weight: 700;}
-
-.radius(@px) {
-	.border-top-radius(@px);					
-	.border-bottom-radius(@px);	
-}
-@font-pri:  						@font-family-sans-serif;
 
 
-.clearmenu() {	
-	/* Small devices (tablets, 768px and up) */
-	@media (min-width: @screen-sm-min) { 
-		& {
-			border: transparent;
-			margin-bottom: 0;
-			min-height: 0;
-		}
-		div.navbar-collapse {
-			border: none;
-			padding-right: 0;
-			ul.nav.navbar-nav {
-				text-align: center;
-				width: 100%;
-				li {
-					float: none;
-					display: inline-block;
-				}
-			}
-		}
-	}
-}
+/* Mais Editados */
+/* ----------------------------------------- */
+
+// Fontes
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+
+// Cores
+@cor-pri:			transparent;
+@cor-seg:			transparent;
+@cor-ter:			transparent;
+@cor-qua:			transparent;
+
+
+/* ----------------------------------------- Mais Editados */		
 
 
 
@@ -60,11 +34,13 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         darken(#428bca, 6.5%); // #337ab7
+@brand-primary:         @cor-pri;
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
+
+
 
 
 //== Scaffolding

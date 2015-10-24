@@ -54,3 +54,9 @@ function clear_url($input) {
   return $domain;
 
 }
+
+
+function images_url($file) {
+  echo get_stylesheet_directory_uri() . '/assets/images/'. $file;
+}
+

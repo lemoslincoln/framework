@@ -12,7 +12,7 @@
 ?>
 	<footer id="footer">
 		<div class="container">
-			<p> Copyright <?php echo date('Y') ?> - <?php bloginfo('name'); ?> - Todos direitos reservados</p>
+			<p> © Copyright <?php echo date('Y') ?> - <?php bloginfo('name'); ?> - Todos direitos reservados</p>
 		</div>
 		<a href="http://bigodesign.com.br" target="_blank" id="bigo" title="Feito com espuma de barbear!"> Desenvolvido por <strong>BIGO Design</strong></a>
 	</footer>

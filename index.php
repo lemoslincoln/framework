@@ -24,7 +24,7 @@ get_header(); ?>
 					  $image = get_sub_field('imagem_slider');
 					  $url = $image['url'];
 					
-					  $size = 'banner-topo';
+					  $size = 'slider-destaque';
 						$thumb = $image['sizes'][ $size ];
 						$width = $image['sizes'][ $size . '-width' ];
 						$height = $image['sizes'][ $size . '-height' ];

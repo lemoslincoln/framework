@@ -12,6 +12,9 @@
 ?>
 	<footer id="footer">
 		<div class="container">
+			<a id="logotipo" class="logotipo logotipo-rodape" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+				<img src="<?php echo get_field('logotipo_rodape', 'option'); ?>" class="img-responsive"/>
+			</a>
 			<p> © Copyright <?php echo date('Y') ?> - <?php bloginfo('name'); ?> - Todos direitos reservados</p>
 		</div>
 		<a href="http://bigodesign.com.br" target="_blank" id="bigo" title="Feito com espuma de barbear!"> Desenvolvido por <strong>BIGO Design</strong></a>

@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
     infinite: false,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
   });
@@ -59,6 +59,14 @@ jQuery(document).ready(function($){
 	$("a[href$='.jpg'], a[href$='.png'], a[href$='.jpeg'], a[href$='.gif']").fancybox();  	
 	$(".gallery a[href$='.jpg'], .gallery a[href$='.png'], .gallery a[href$='.jpeg'], .gallery a[href$='.gif']").attr('rel','gallery').fancybox();  	
 	$(".video").fancybox({ maxWidth		: 800, maxHeight		: 600, fitToView		: false, width			: '70%', height			: '70%', autoSize		: false, closeClick		: false, openEffect		: 'none', closeEffect		: 'none' });
+
+	// Rolagem suave
+	$('a.smoothscroll').click(function() {
+	  if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	    var target = $(this.hash); target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	    if (target.length) { $('html,body').animate({ scrollTop: target.offset().top }, 1000); return false; }
+	  }
+	});  
 	/* -----------------------------------------  Default Scripts */		
 	
 

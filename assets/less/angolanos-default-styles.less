@@ -18,15 +18,17 @@ a {
 		/* Small devices (tablets, 768px and up) */
 		@media (min-width: @screen-sm-min) { 
 			& {
-				border: transparent;
+				border: 0;
 				margin-bottom: 0;
 				min-height: 0;
+				background: transparent;
 			}
 			div.navbar-collapse {
-				border: none;
+				border: none;				
 				padding-right: 0;
 				ul.nav.navbar-nav {
 					text-align: center;
+					float: none;
 					width: 100%;
 					li {
 						float: none;

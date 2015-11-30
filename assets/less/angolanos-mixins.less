@@ -1,64 +1,5 @@
 @import "variables.less";
 
-/* Default Styles */
-/* ----------------------------------------- */
-	.select-box {		
-		background-color: white;
-		margin: 0 !important;
-		margin-bottom: 1em !important;
-		position: relative;
-		border: 1px solid fade(@cor-pri, 20%);
-		z-index: 2;
-		width: 100%;		
-
-		select {
-			-webkit-appearance:none;
-		  -moz-appearance:none;
-		  appearance:none;
-		  position:relative;
-		  z-index: 2;
-		  width: 100%;
-		  background:transparent;
-		  display: inline-block;
-		  padding:9px;
-		  // border:1px solid @cor-pri;
-		  border: 0;
-		  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-		  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-		  box-sizing: border-box; 
-		  /* Safari 3-4, iOS 1-3.2, Android 1.6- */
-		  -webkit-border-radius: 0px; 
-		  /* Firefox 1-3.6 */
-		  -moz-border-radius: 0px; 
-		  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
-		  border-radius: 0px;		  	  	  
-		  text-transform: uppercase;
-		  color: @cor-pri;
-		  font-weight: 600;
-		  font-size: 14px;
-		  padding-right: 30px;
-		  &:focus {
-		  	outline: 0;
-		  }
-		}	  	
-		
-		&::after {
-			// content:"\f078";
-			content:"\f13a";
-		  font-family: FontAwesome;	  	  
-		  position:absolute;
-		  right: 8px;
-		  top: 50%;
-		  color: @cor-pri;	  	  
-		  z-index:1;	  	  
-		  font-size: 22px;
-		  line-height:10%;  	  
-		}
-	}
-
-/* ----------------------------------------- Default Styles */		
-
-
 /* Functions */
 /* ----------------------------------------- */
 	
@@ -91,48 +32,24 @@
 		.border-top-radius(@px);					
 		.border-bottom-radius(@px);	
 	}
-
-	.clearmenu() {	
-		/* Small devices (tablets, 768px and up) */
-		@media (min-width: @screen-sm-min) { 
-			& {
-				border: transparent;
-				margin-btransparent: 0;
-				min-heig: 0transparent;
-		transparent}
-			div.navbar-collapse {
-				border: none;
-				padding-right: 0;
-				ul.nav.navbar-nav {
-					text-align: center;
-					width: 100%;
-					li {
-						float: none;
-						display: inline-block;
-					}
-				}
-			}
-		}
-	}
-
-
-
-
+	
+	// Filtro para escala de cinza ativo
 	.grayscale_on() {
 	  -webkit-filter: grayscale(100%);
 	  filter: grayscale(100%);
 	  filter: gray;
 	  filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
 	}
-
+	
+	// Desativar filtro escala cinza
 	.grayscale_off() {
 	  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
 	  -webkit-filter: grayscale(0%);
 	}
 
-
+	// Função para ativar o filtro de escala cinza no elemento e desativar no hover do mesmo
 	.grayscale() {
-	  // .grayscale_on();
+	  .grayscale_on();
 	  &:hover, &.active { .grayscale_off(); }
 	}
 

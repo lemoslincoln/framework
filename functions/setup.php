@@ -246,14 +246,13 @@ function of_get_option($name, $default = false) {
 
 	}
 
-/* Carrega Scripts/Styles para Lightbox */
+/* Carrega Scripts/Styles para o Fancybox */
 /* ----------------------------------------- */
-	function twentytwelve_add_lightbox() {
-	    wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/assets/lightbox/js/jquery.fancybox.pack.js', array( 'jquery' ), false, true );
-	    wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/assets/lightbox/js/lightbox.js', array( 'fancybox' ), false, true );
-	    wp_enqueue_style( 'lightbox-style', get_template_directory_uri() . '/assets/lightbox/css/jquery.fancybox.css' );
+	function angolanos_add_fancybox() {
+	    wp_enqueue_script( 'fancybox-js', get_template_directory_uri() . '/vendors/fancybox/jquery.fancybox.pack.js', array( 'jquery' ), '2.1.5', true );	    
+	    wp_enqueue_style( 'fancybox-css', get_template_directory_uri() . '/vendors/fancybox/jquery.fancybox.css' );
 	}
-	add_action( 'wp_enqueue_scripts', 'twentytwelve_add_lightbox' );
+	add_action( 'wp_enqueue_scripts', 'angolanos_add_fancybox' );
 
 
 /* Carrega Arquivos CSS do tema */

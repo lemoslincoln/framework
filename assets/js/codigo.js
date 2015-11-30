@@ -1,7 +1,6 @@
 jQuery(document).ready(function($){ 
   
-  // Estilizando o select, exclui alguns
-  // $('select:not()').wrap('<div class="select-box"></div>');
+  
 
   //Banner
   $('.banner').slick({
@@ -11,6 +10,8 @@ jQuery(document).ready(function($){
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1
+    autoplay: true,
+    autoplaySpeed: 2000,
   });
   // Slider responsivo
 	$('.responsivo').slick({
@@ -22,7 +23,7 @@ jQuery(document).ready(function($){
 		slidesToScroll: 3,
 		responsive: [
 				{
-					breakpoint: 1024,
+					breakpoint: 1200,
 					settings: {
 					slidesToShow: 3,
 					slidesToScroll: 3,
@@ -31,14 +32,14 @@ jQuery(document).ready(function($){
 				}
 			},
 				{
-					breakpoint: 600,
+					breakpoint: 992,
 					settings: {
 					slidesToShow: 2,
 					slidesToScroll: 2
 				}
 			},
 				{
-					breakpoint: 480,
+					breakpoint: 768,
 					settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1
@@ -46,4 +47,20 @@ jQuery(document).ready(function($){
 			}
 		]
 	});
+
+
+	/*  Default Scripts */
+	/* ----------------------------------------- */			
+	// SELECT , caso queira excluir algum elemento, colocar 'select:not(elementos)'
+	$('select').wrap('<div class="select-box"></div>');
+
+	// Fancybox
+	$(".fancybox").fancybox();  	
+	$("a[href$='.jpg'], a[href$='.png'], a[href$='.jpeg'], a[href$='.gif']").fancybox();  	
+	$(".gallery a[href$='.jpg'], .gallery a[href$='.png'], .gallery a[href$='.jpeg'], .gallery a[href$='.gif']").attr('rel','gallery').fancybox();  	
+	$(".video").fancybox({ maxWidth		: 800, maxHeight		: 600, fitToView		: false, width			: '70%', height			: '70%', autoSize		: false, closeClick		: false, openEffect		: 'none', closeEffect		: 'none' });
+	/* -----------------------------------------  Default Scripts */		
+	
+
+
 });

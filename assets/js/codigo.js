@@ -1,4 +1,8 @@
 jQuery(document).ready(function($){ 
+  
+  // Estilizando o select, exclui alguns
+  // $('select:not()').wrap('<div class="select-box"></div>');
+
   //Banner
   $('.banner').slick({
     dots: true,

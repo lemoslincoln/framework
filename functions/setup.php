@@ -187,7 +187,7 @@ function twentyten_widgets_init() {
 		'name' => __( 'Sidebar', 'twentyten' ),
 		'id' => 'sidebar-principal',
 		'description' => __( 'Arraste os itens desejados até aqui. ', 'twentyten' ),
-		'before_widget' => '<div class="widgetsidebar" id="%1$s">',
+		'before_widget' => '<div class="widget %2$s" id="%1$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h2 style="display:none;">',
 		'after_title' => '</h2>',

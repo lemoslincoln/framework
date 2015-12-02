@@ -241,6 +241,11 @@ function of_get_option($name, $default = false) {
 			wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets/js/bootstrap.min.js', array('jquery'));
 			wp_enqueue_script('slick', get_template_directory_uri(). '/assets/slick/slick.min.js', array('jquery'));
 			wp_enqueue_script('acf-maps', get_template_directory_uri(). '/assets/js/maps.js', array('jquery'));
+
+			//SimpleWeather
+			// wp_enqueue_script('simpleweather', get_template_directory_uri(). '/vendors/simpleWeather/jquery.simpleWeather-2.3.min.js', array('jquery'));
+			// wp_enqueue_script('tempo-script', get_template_directory_uri(). '/vendors/simpleWeather/tempo-script.js', array('jquery', 'simpleweather'));
+			
 			wp_enqueue_script('codigo', get_template_directory_uri(). '/assets/js/codigo.js', array('jquery'));
 	  }
 

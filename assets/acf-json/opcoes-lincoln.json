@@ -180,15 +180,15 @@
         "location": [
             [
                 {
-                    "param": "options_page",
+                    "param": "page_type",
                     "operator": "==",
-                    "value": "acf-options-opcoes-gerais"
+                    "value": "front_page"
                 }
             ]
         ],
         "menu_order": 2,
-        "position": "normal",
-        "style": "default",
+        "position": "acf_after_title",
+        "style": "seamless",
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
@@ -219,20 +219,20 @@
                 "key": "field_561578d429a51",
                 "label": "Endere\u00e7o",
                 "name": "endereco_info",
-                "type": "text",
+                "type": "textarea",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
-                    "width": "33.3333",
+                    "width": 33,
                     "class": "",
                     "id": ""
                 },
                 "default_value": "",
                 "placeholder": "",
-                "prepend": "",
-                "append": "",
                 "maxlength": "",
+                "rows": 3,
+                "new_lines": "wpautop",
                 "readonly": 0,
                 "disabled": 0
             },
@@ -241,11 +241,11 @@
                 "label": "Telefone",
                 "name": "telefone_info",
                 "type": "text",
-                "instructions": "",
+                "instructions": "Apenas n\u00fameros. Exemplos:\r\n(62) 3932-7441 ->  6239327441",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
-                    "width": "33.3333",
+                    "width": 34,
                     "class": "",
                     "id": ""
                 },
@@ -266,7 +266,7 @@
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
-                    "width": "33.3333",
+                    "width": 33,
                     "class": "",
                     "id": ""
                 },

@@ -3,6 +3,14 @@
 /* Functions */
 /* ----------------------------------------- */
 	
+	.columns(@qtd: 2) {
+		@media (min-width: @screen-sm-min) { 
+			-webkit-column-count: @qtd; /* Chrome, Safari, Opera */
+		  -moz-column-count: @qtd; /* Firefox */
+		  column-count: @qtd;
+		}		
+	}
+	.columns { .columns();}
 	.cover() {
 	  -webkit-background-size: cover !important;
 	  -moz-background-size: cover !important;

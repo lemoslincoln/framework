@@ -3,6 +3,7 @@ jQuery(document).ready(function($){
     $('.time-prevision li:nth-child(1)').remove();
     $('.time-prevision li:last-child').remove();
   }
+  var domain = 'http://'+window.location.hostname + window.location.pathname;
   var cssURL = 'http://'+window.location.hostname+"/css";
   var scriptURL = 'http://'+window.location.hostname+"/js";
 
@@ -71,7 +72,7 @@ jQuery(document).ready(function($){
                     var country = $(this).find('country').text();
                     var estado = $(this).find('admin1').text();
                     var woeid = $(this).find('woeid').text();
-                    $.getJSON("http://sementesbrasilia.com.br/wp-content/themes/sementes/js/cidades.json", function(data){  
+                    $.getJSON(domain + "wp-content/themes/softagro/vendors/simpleWeather/cidades.json", function(data){  
                  $.each(data.estados, function(){  
                   if(removeAccentuation(this.nome)==estado){
                     estado = this.nome;

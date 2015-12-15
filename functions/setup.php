@@ -332,3 +332,13 @@ if (isset($_GET['activated']) && is_admin()){
 }
 
 /* ----------------------------------------- Cria páginas ao instalar o tema */		
+
+/* 
+	Filtro para criar container responsivo nos embeds do the_content
+	Style no @angolanos-default-styles.less
+/* ----------------------------------------- */
+	add_filter('embed_oembed_html', 'wrap_embed_with_div', 10, 3);
+	function wrap_embed_with_div($html, $url, $attr) {
+	        return "<div class=\"responsive-container\">".$html."</div>";
+	}
+/* ----------------------------------------- Filtro para criar container responsivo nos embeds do the_content */		

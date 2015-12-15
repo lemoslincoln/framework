@@ -27,6 +27,23 @@ function thumbnail_bg ( $tamanho = 'paginas-destaque' ) {
     echo 'style="background: url('.$get_post_thumbnail[0].' ) center top;"';
 }
 
+/* É preciso setar o ACF para retornar apenas a URL. */
+/* ----------------------------------------- */
+  function acf_thumbnail_bg ( $nomeField ) {
+    global $post;      
+      if (get_field($nomeField)) {
+        $src = get_field($nomeField);  
+      } else {
+        return;
+      }      
+      echo 'style="background-image: url('. $src .' );"';
+  }
+
+/* ----------------------------------------- É preciso setar o ACF para retornar apenas a URL. */    
+
+
+
+
 function mascara_string($mascara,$string) {
    $string = str_replace(" ","",$string);
    for($i=0;$i<strlen($string);$i++)

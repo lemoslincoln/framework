@@ -24,3 +24,6 @@ require_once ('functions/scripts.php');
 // Registra custom posts
 // require_once ('includes/cpt-arquivos.php');
 // require_once ('includes/cpt-produtos.php'); // CPT Produtos e taxonomia 'category' padrão do wp
+
+// Filter Yoast Meta Priority
+add_filter( 'wpseo_metabox_prio', function() { return 'low';});

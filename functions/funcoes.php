@@ -21,10 +21,30 @@ function content($limit) {
 }
 
 /* Modo de uso <section id="topo" <?php thumbnail_bg( 'paginas-destaque' ); ?>> */
-function thumbnail_bg ( $tamanho = 'paginas-destaque' ) {
-  global $post;
+function thumbnail_bg ( $tamanho = 'full' ) {
+    global $post;
     $get_post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $tamanho, false, '' );
-    echo 'style="background: url('.$get_post_thumbnail[0].' ) center top;"';
+    if ($get_post_thumbnail) {
+      echo 'style="background-image: url('.$get_post_thumbnail[0].' );"';  
+    } else if ($post->post_parent > 0 ) {
+      $get_post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post->post_parent), $tamanho, false, '' );
+      echo 'style="background-image: url('.$get_post_thumbnail[0].' );"';  
+    } {
+      echo "no-bg";
+    }    
+}
+
+function get_thumbnail_bg ( $tamanho = 'full' ) {
+    global $post;
+    $get_post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $tamanho, false, '' );
+    if ($get_post_thumbnail) {
+      return 'style="background-image: url('.$get_post_thumbnail[0].' );"';  
+    } else if ($post->post_parent > 0 ) {
+      $get_post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post->post_parent), $tamanho, false, '' );
+      return 'style="background-image: url('.$get_post_thumbnail[0].' );"';  
+    } {
+      return "no-bg";
+    }    
 }
 
 /* É preciso setar o ACF para retornar apenas a URL. */
@@ -77,3 +97,13 @@ function images_url($file) {
   echo get_stylesheet_directory_uri() . '/assets/images/'. $file;
 }
 
+function get_images_url($file) {
+  return get_stylesheet_directory_uri() . '/assets/images/'. $file;
+}
+
+function get_excerpt_twitter($length = 20) {
+  $excerpt = get_the_excerpt();
+  $the_str = substr($excerpt, 0, $length);
+  $the_str = trim(preg_replace( '/\s+/', ' ', $the_str));
+  return $the_str . '...';
+}

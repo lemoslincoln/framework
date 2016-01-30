@@ -37,7 +37,7 @@
 
 				<section class="col-sm-3">
 					<a id="logotipo" class="logotipo logotipo-cabecalho" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-						<img src="<?php echo get_field('logotipo', 'option'); ?>" class="img-responsive"/>
+						<img src="<?php echo get_field('logotipo', get_option( 'page_on_front' )); ?>" class="img-responsive"/>
 					</a>
 				</section>
 
@@ -68,7 +68,7 @@
 				</section>
 				
 				<section class="col-sm-2">
-					<?php get_template_part('partials/_social-links.php') ?>
+					<?php get_template_part('partials/_social-links') ?>
 				</section>
 			</section>
 		</section>

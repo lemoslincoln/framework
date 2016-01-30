@@ -76,7 +76,7 @@ add_filter( 'admin_body_class', 'id_usuario_body_class' );
   $optionsPage = array(
     
     /* (string) The title displayed on the options page. Required. */
-  'page_title' => 'Opções Gerais',
+  'page_title' => 'Opções',
   
   /* (string) The title displayed in the wp-admin sidebar. Defaults to page_title */
   'menu_title' => '',

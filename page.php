@@ -22,9 +22,9 @@ get_header(); ?>
 					<h1 class="page-title"><?php the_title(); ?></h1>
 				</header>
 				
-				<section>
+				<div class="conteudo">
 					<?php the_content(); ?>
-				</section>
+				</div>
 				
 				<footer>
 					<?php comments_template( '', true ); ?>

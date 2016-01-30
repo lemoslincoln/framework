@@ -17,9 +17,9 @@ get_header(); ?>
 	<!-- banner -->
 	<article class="container" role="banner">
 		<section class="row">
-			<?php if( have_rows('slider_principal','option') ): ?>
+			<?php if( have_rows('slider_principal',get_option( 'page_on_front' )) ): ?>
 				<section class="banner">
-					<?php  while ( have_rows('slider_principal','option') ) : the_row();
+					<?php  while ( have_rows('slider_principal',get_option( 'page_on_front' )) ) : the_row();
 					
 					  $image = get_sub_field('imagem_slider');
 					  $url = $image['url'];

@@ -3,6 +3,24 @@
 /**
  * Limitar o número de caracteres baseado na $excerpt
  *
+ * @since Bruno Souza 2.0
+ */
+/* <p><?php echo excerpt('40'); ?></p> */
+function excerpt($limit) {
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
+  if (count($excerpt)>=$limit) {
+    array_pop($excerpt);
+    $excerpt = implode(" ",$excerpt).'...';
+  } else {
+    $excerpt = implode(" ",$excerpt);
+  }
+  $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
+  return $excerpt;
+}
+
+/**
+ * Limitar o número de caracteres baseado na $excerpt
+ *
  * @since Bigo 2.0
  */
 /* Modo de uso <?php echo content(10); ?> */

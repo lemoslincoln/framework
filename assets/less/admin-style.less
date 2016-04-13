@@ -24,3 +24,17 @@ form#your-profile {
 	display: none;
 }
 /* ----------------------------------------- Ajustes Perfil */		
+
+/* exibe menu do acf apenas para usuário 01 */
+/* ----------------------------------------- */
+#toplevel_page_edit-post_type-acf-field-group {
+	display: none;
+}
+body {
+	&.user-1 {
+		#toplevel_page_edit-post_type-acf-field-group {
+			display: block !important;
+		}
+	}
+}
+/* ----------------------------------------- exibe menu do acf apenas para usuário 01 */		

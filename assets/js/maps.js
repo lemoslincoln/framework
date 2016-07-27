@@ -153,7 +153,7 @@ function center_map( map ) {
 *  @return  n/a
 */
 // global var
-var maps = {};
+var map = null;
 
 $(document).ready(function(){
   

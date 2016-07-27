@@ -117,7 +117,8 @@ add_filter( 'admin_body_class', 'id_usuario_body_class' );
 
 
   if( function_exists('acf_add_options_page') ) {
-    acf_add_options_page($optionsPage); 
+    // descomentar para ativar página de opções
+    // acf_add_options_page($optionsPage); 
   }
 
 /* ----------------------------------------- Cria página "Opções" para o ACF */    

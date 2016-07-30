@@ -71,6 +71,20 @@ function get_thumbnail_bg ( $tamanho = 'full' ) {
     }    
 }
 
+function taxonomy_thumbnail_bg ( $nomeField ) {
+  global $post;
+  $queried_object = get_queried_object(); 
+  $taxonomy = $queried_object->taxonomy;
+  $term_id = $queried_object->term_id;  
+
+    if (get_field($nomeField, $queried_object)) {
+      $src = get_field($nomeField, $queried_object);
+    } else {
+      return;
+    }      
+    echo 'style="background-image: url('. $src .' );"';
+}
+
 /* É preciso setar o ACF para retornar apenas a URL. */
 /* ----------------------------------------- */
   function acf_thumbnail_bg ( $nomeField ) {

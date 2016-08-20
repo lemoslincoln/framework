@@ -8,6 +8,9 @@ fale@brunowp.com.br
 
 
 ### Changelog
+2.5 - 20/08/2016
+- Atualização menu responsivo
+
 2.4 - 26/07/2016
 - Atualização Slick 1.6
 - Atualização FontAwesome 4.6.3

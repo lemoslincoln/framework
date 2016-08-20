@@ -44,7 +44,7 @@
 				<div class="col-sm-7">						
 					<nav id="navmenu" class="navbar navbar-default" role="navigation">
 					  <div class="navbar-header">
-					    <a class="navbar-brand" href="#">Menu</a>
+					    <a class="navbar-brand visible-xs" href="#">Menu</a>
 	            <button type="button" class="navbar-toggle offcanvas-toggle pull-right" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas" style="float:left;">
                 <span class="sr-only">Toggle navegação</span>
                 <span>

@@ -1,7 +1,5 @@
 jQuery(document).ready(function($){ 
   
-  
-
   //Banner
   $('.banner').slick({
     dots: true,
@@ -52,7 +50,7 @@ jQuery(document).ready(function($){
 	/*  Default Scripts */
 	/* ----------------------------------------- */			
 	// SELECT , caso queira excluir algum elemento, colocar 'select:not(elementos)'
-	$('select').wrap('<div class="select-box"></div>');
+	$('select').not('.multiple').wrap('<div class="select-box"></div>');
 
 	// Fancybox
 	$(".fancybox").fancybox();  	

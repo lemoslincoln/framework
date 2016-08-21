@@ -237,14 +237,16 @@ function of_get_option($name, $default = false) {
 			wp_enqueue_script('jquery');	
 
 			// Os demais js
-			// wp_enqueue_script('smoothwheel', get_template_directory_uri(). '/assets/js/jquery.smoothwheel-ck.js', array('jquery'));
-			wp_enqueue_script('jsbootstrap', get_template_directory_uri(). '/assets/js/bootstrap.min.js', array('jquery'));
-			wp_enqueue_script('slick', get_template_directory_uri(). '/assets/slick/slick.min.js', array('jquery'));
-			wp_enqueue_script('acf-maps', get_template_directory_uri(). '/assets/js/maps.js', array('jquery'));
-
+			// wp_enqueue_script('smoothwheel', $link. '/assets/js/jquery.smoothwheel-ck.js', ['jquery']);
+			$link = get_template_directory_uri();
+			wp_enqueue_script('jsbootstrap', $link . '/assets/js/bootstrap.min.js', ['jquery']);
+			wp_enqueue_script('slick', $link . '/assets/slick/slick.min.js', ['jquery']);
+			wp_enqueue_script('acf-maps', $link . '/assets/js/maps.js', ['jquery']);
+			wp_enqueue_script('mask', $link . '/assets/js/jquery.mask.min.js', ['jquery']);
+			
 			//SimpleWeather
-			// wp_enqueue_script('simpleweather', get_template_directory_uri(). '/vendors/simpleWeather/jquery.simpleWeather-2.3.min.js', array('jquery'));
-			// wp_enqueue_script('tempo-script', get_template_directory_uri(). '/vendors/simpleWeather/tempo-script.js', array('jquery', 'simpleweather'));
+			// wp_enqueue_script('simpleweather', $link. '/vendors/simpleWeather/jquery.simpleWeather-2.3.min.js', ['jquery']);
+			// wp_enqueue_script('tempo-script', $link. '/vendors/simpleWeather/tempo-script.js', ['jquery'] 'simpleweather'));
 			
 			wp_enqueue_script('codigo', get_template_directory_uri(). '/assets/js/codigo.js', array('jquery'));
 	  }

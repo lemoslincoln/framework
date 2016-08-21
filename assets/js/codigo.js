@@ -49,6 +49,12 @@ jQuery(document).ready(function($){
 
 	/*  Default Scripts */
 	/* ----------------------------------------- */			
+	// Mascara de DDD e 9 dígitos para telefones
+	var SPMaskBehavior = function (val) {
+		  return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+		}, spOptions = { onKeyPress: function(val, e, field, options) { field.mask(SPMaskBehavior.apply({}, arguments), options); } };
+	$('.mask-phone, input[type="tel"]').mask(SPMaskBehavior, spOptions);
+
 	// SELECT , caso queira excluir algum elemento, colocar 'select:not(elementos)'
 	$('select').not('.multiple').wrap('<div class="select-box"></div>');
 

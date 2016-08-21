@@ -238,11 +238,12 @@ function of_get_option($name, $default = false) {
 
 			// Os demais js
 			// wp_enqueue_script('smoothwheel', $link. '/assets/js/jquery.smoothwheel-ck.js', ['jquery']);
-			$link = get_template_directory_uri();
-			wp_enqueue_script('jsbootstrap', $link . '/assets/js/bootstrap.min.js', ['jquery']);
-			wp_enqueue_script('slick', $link . '/assets/slick/slick.min.js', ['jquery']);
-			wp_enqueue_script('acf-maps', $link . '/assets/js/maps.js', ['jquery']);
-			wp_enqueue_script('mask', $link . '/assets/js/jquery.mask.min.js', ['jquery']);
+			$link = get_template_directory_uri() . '/assets/';
+			wp_enqueue_script('jsbootstrap', $link . 'js/bootstrap.min.js', ['jquery']);
+			wp_enqueue_script('offcanvas', $link . 'js/bootstrap.offcanvas.min.js', ['jquery']);
+			wp_enqueue_script('slick', $link . 'slick/slick.min.js', ['jquery']);
+			wp_enqueue_script('acf-maps', $link . 'js/maps.js', ['jquery']);
+			wp_enqueue_script('mask', $link . 'js/jquery.mask.min.js', ['jquery']);
 			
 			//SimpleWeather
 			// wp_enqueue_script('simpleweather', $link. '/vendors/simpleWeather/jquery.simpleWeather-2.3.min.js', ['jquery']);
@@ -267,6 +268,7 @@ function of_get_option($name, $default = false) {
 	function bigo_load_css(){ 
 
 		// Carrega o arquivo em todas as páginas
+		wp_enqueue_style( 'offcanvas', get_template_directory_uri() . '/assets/css/bootstrap.offcanvas.min.css' );
 		wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/slick/slick.css' );
 		wp_enqueue_style( 'slick-theme', get_template_directory_uri() . '/assets/slick/slick-theme.css' );
 		wp_enqueue_style( 'fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css', false, '4.6.3');

@@ -1,65 +1,54 @@
 @import "variables.less";
+@import "angolanos-mixins.less";
 
-/* login page background */
 body.login {
   background: url('../images/bg-login.jpg') no-repeat left center #ffffff;
-  background-size: cover;
-}
-/* logo */
-.login h1 a {
-  background: url("../images/logo.png") no-repeat center center;
-  width: 244px!important;
-  height: 70px!important;
-  margin: 80px auto 5px;
-  background-size: auto;
-}
-#loginform {
-  background: rgba(255, 255, 255, 0.5);
-  border: none;
-  box-shadow: none;
-}
-#loginform label {
-  color: black;
-  font-weight: 500;
-}
-#loginform .oneall_social_login {
-  display: none;
-}
-#loginform #wp-submit {
-  border: none;
-  background: @cor-pri !important;
-  box-shadow: none;
-  padding: 0 20px;
-}
-.login #nav,
-.login #backtoblog {
-  color: white !important;
-  text-align: center;
-  padding-left: 0;
-}
-.login #nav a,
-.login #backtoblog a {
-  color: white !important;
-  text-decoration: none;
-  text-shadow: none;
-}
-.login #nav a:hover,
-.login #backtoblog a:hover {
-  color: white !important;
-  text-decoration: underline;
-}
-/*
-/* messages *!/
-.message { background:#fff; color:black }
-.login #login_error { background-color:#fff; border-color:gray; color:#black;}
+  .cover();  
 
-/* login form *!/
-.login label { color: black; }
-.login input[type=text], .login input[type=password] { color:gray; }
-.login .button-primary { border-color:gray; font-weight: bold; color: white; background: #617861; text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0; }
+  h1 {
+    a {
+      background: url("../images/logotipo_login.png") no-repeat center center;
+      width: 336px!important;
+      height: 93px!important;
+      margin: 80px auto 5px;
+      background-size: auto;
+    }
+  }
 
-/* links below login forms *!/
-.login #nav, .login #backtoblog {text-shadow:none !important;padding: 8px;}
-.login #nav a, .login #backtoblog a {color: black !important; text-decoration:none}
-.login #nav a:hover, .login #backtoblog a:hover { text-decoration: underline;
-}*/
+  #loginform {
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    box-shadow: none;
+    label {
+      color: black;
+      font-weight: 500;
+    }
+    #wp-submit {
+      border: none;
+      background: @cor-pri !important;
+      box-shadow: none;
+      padding: 0 20px;
+    }
+  } // #loginform
+
+  #nav, #backtoblog {
+    color: white !important;
+    text-align: center;
+    padding-left: 0;
+    a {
+      color: white !important;
+      text-decoration: none;
+      text-shadow: none;
+      &:hover {
+        color: white !important;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .button {
+    &.button-primary {
+      background-color: @cor-ter;
+    }
+  }
+}

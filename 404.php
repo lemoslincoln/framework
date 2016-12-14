@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-	<section id="content" class="container">
-		<div class="row">
+	<main id="content" class="container" role="main">
+		<section class="row">
 			<div class="col-sm-8">
 				<article <?php post_class(); ?> >
 					<h1><?php _e( 'Ops.', 'twentyten' ); ?></h1>
@@ -27,6 +27,6 @@ get_header(); ?>
 
 			<?php get_sidebar(); ?>
 			
-		</div> <!-- row -->
-	</section> <!-- #content -->
+		</section> <!-- row -->
+	</main> <!-- #content -->
 <?php get_footer(); ?>

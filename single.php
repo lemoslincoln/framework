@@ -8,43 +8,43 @@
  */
 
 get_header(); ?>
-<section id="content" class="container">
-		<div class="row">
+	<main id="content" class="container">
+		<section class="row">
 			<div class="col-sm-8">
-				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-					<article <?php post_class('container' ); ?> >
-						<header>
-							<h1><?php the_title(); ?></h1>
-						</header>
-						
-						<section>
-							<div class="conteudo">
-								<?php the_content(); ?>
-							</div>
-							
-							<?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
-								<div class="author-info">
-									<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyten_author_bio_avatar_size', 60 ) ); ?>
-									<h2><?php printf( esc_attr__( 'Sobre %s', 'twentyten' ), get_the_author() ); ?></h2>
-									<?php the_author_meta( 'description' ); ?>
-									<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-									<?php printf( __( 'Ver todos posts de: %s &rarr;', 'twentyten' ), get_the_author() ); ?>
-									</a>
-								</div>
-							<?php endif; ?>
-							
-						</section>
-						
-						<footer>
-							<?php comments_template( '', true ); ?>
-						</footer>
+				<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+							<figure>
+								<?php the_post_thumbnail( 'post-thumb', array( 'class' => 'img-responsive' ) ); ?>
+							</figure>
+						</a>
+						<a href="<?php the_permalink(); ?>" title="Saiba mais sobre: <?php the_title(); ?>"><h2><?php the_title(); ?></h2></a>
+
+						<span class="date"><?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?></span>
+						<span class="author"><?php _e( 'Publicado por', 'angolanos' ); ?> <?php the_author_posts_link(); ?></span>
+						<span class="comments"><?php comments_number( '0 comentário', '1 comentário', '% comentários' ); ?></span>
+
+						<?php the_content(); ?>
+
+						<?php the_tags( __( 'Tags: ', 'angolanos' ), ', ', '<br>'); ?>
+						<p><?php the_category(', '); ?></p>
+						<p><?php the_author(); ?></p>
+						<?php comments_template(); ?>
 					</article>
-				<?php endwhile; // end of the loop. ?>
+
+				<?php endwhile; ?>
+				<?php else: ?>
+
+					<article>
+						<h1><?php _e( 'Desculpe, nenhum post encontrado.', 'angolanos' ); ?></h1>
+					</article>
+					
+				<?php endif; ?>
 			</div>
 
 			<?php get_sidebar(); ?>
 			
-		</div> <!-- row -->
-	</section> <!-- #content -->
+		</section> <!-- row -->
+	</main> <!-- #content -->
 <?php get_footer(); ?>

@@ -8,6 +8,11 @@ fale@brunowp.com.br
 
 
 ### Changelog
+2.6 - 14/12/2016
+- Melhorias html5/css3
+- Suporte para novos idiomas
+- Correções diversas
+
 2.5.1 - 21/08/2016
 - Add Phone Mask by default
 

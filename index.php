@@ -14,47 +14,36 @@
  */
 
 get_header(); ?>
-	<!-- banner -->
-	<article class="container" role="banner">
+	<main role="main" class="container">
 		<section class="row">
-			<?php if( have_rows('slider_principal',get_option( 'page_on_front' )) ): ?>
-				<section class="banner">
-					<?php  while ( have_rows('slider_principal',get_option( 'page_on_front' )) ) : the_row();
-					
-					  $image = get_sub_field('imagem_slider');
-					  $url = $image['url'];
-					
-					  $size = 'slider-destaque';
-						$thumb = $image['sizes'][ $size ];
-						$width = $image['sizes'][ $size . '-width' ];
-						$height = $image['sizes'][ $size . '-height' ];
-					?>
-					
-						<div>
-							<section class="banner-mask">
-								<h4><?php the_sub_field('titulo_slider'); ?></h4>
-								<p><?php the_sub_field('descricao_slider'); ?></p>
-								<a href="<?php the_sub_field('link_slider'); ?>">Leia mais...</a>
-							</section>
-							
-							<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" class="img-responsive" />
-						</div>
-					  
-					<?php endwhile; ?>
-				</section>
+
+			<div class="col-sm-12">
+				<h1>Título da seção</h1>
+			</div>
+
+			<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+				<article <?php post_class(); ?>>
+					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+						<figure>
+							<?php the_post_thumbnail( 'post-thumb', array( 'class' => 'img-responsive' ) ); ?>
+						</figure>
+					</a>
+					<a href="<?php the_permalink(); ?>" title="Saiba mais sobre: <?php the_title(); ?>"><h2><?php the_title(); ?></h2></a>
+
+					<span class="date"><?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?></span>
+					<span class="author"><?php _e( 'Publicado por', 'angolanos' ); ?> <?php the_author_posts_link(); ?></span>
+					<span class="comments"><?php comments_number( '0 comentário', '1 comentário', '% comentários' ); ?></span>
+
+					<?php the_excerpt(); ?>
+				</article>
+			<?php endwhile; ?>
+
+			<?php else: ?>
+				<article>
+					<h2><?php _e( 'Desculpe, nenhum post encontrado.', 'angolanos' ); ?></h2>
+				</article>
 			<?php endif; ?>
+			<?php wp_reset_query(); ?>
 		</section>
-	</article>
-	<!-- banner end -->
-	
-	<section class="container">
-		<section class="row">
-			<section class="col-sm-12">
-				<?php while( have_posts() ): the_post(); ?>
-					<?php the_title(); ?>
-				<?php endwhile; ?>
-				<?php wp_reset_query(); ?>
-			</section>
-		</section>
-	</section>
+	</main>
 <?php get_footer(); ?>

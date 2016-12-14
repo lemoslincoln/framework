@@ -156,20 +156,12 @@ function center_map( map ) {
 var map = null;
 
 $(document).ready(function(){
-  
-  $('.acf-map').each(function(){
-    var contentID = $(this).attr('href');   
-    maps.contentID = new_map( $(this) );
-    console.log(maps.contentID);
-  });
 
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {      
-      // Linkão comedor de buceta que fez essa merda funcionar!!
-      var contentID = $(this).attr('href'); 
-      var map = maps.contentID;
-      var center=map.getCenter();
-      google.maps.event.trigger(map, "resize");
-      map.setCenter(center);
+  $('.acf-map').each(function(){
+
+    // create map
+    map = new_map( $(this) );
+
   });
 
 });

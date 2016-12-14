@@ -13,11 +13,13 @@
  */
 
 get_header(); ?>
-	<section id="content" class="container">
-		<div class="row">
+	<?php get_template_part('partials/_slideshow'); ?>
+	
+	<main id="content" class="container" role="main">
+		<section class="row">
 			<div class="col-sm-12">
 				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-					<article <?php post_class('container' ); ?> >
+					<article <?php post_class(); ?> >
 						<header>
 							<h1 class="page-title"><?php the_title(); ?></h1>
 						</header>
@@ -33,6 +35,6 @@ get_header(); ?>
 					</article>
 				<?php endwhile; // end of the loop. ?>
 			</div>
-		</div> <!-- row -->
-	</section> <!-- #content -->
+		</section> <!-- row -->
+	</main> <!-- #content -->
 <?php get_footer(); ?>

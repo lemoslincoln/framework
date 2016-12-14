@@ -8,10 +8,10 @@
  */
 
 get_header(); ?>
-	<section id="content" class="container">
-		<div class="row">
+	<main id="content" class="container" role="main">
+		<section class="row">
 			<div class="col-sm-8">
-				<article <?php post_class('container' ); ?> >
+				<article <?php post_class(); ?> >
 					<h1><?php printf( __( 'Categoria: %s', 'twentyten' ), '' . single_cat_title( '', false ) . '' ); ?></h1>
 
 					<?php if ( have_posts() ):  ?>
@@ -30,6 +30,6 @@ get_header(); ?>
 			
 			<?php get_sidebar(); ?>
 							
-		</div> <!-- row -->
-	</section> <!-- #content -->
+		</section> <!-- row -->
+	</main> <!-- #content -->
 <?php get_footer(); ?>

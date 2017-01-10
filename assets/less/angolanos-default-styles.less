@@ -9,6 +9,20 @@ a {
 	.transition(all 150ms ease-in-out);
 	text-decoration: none !important;
 }
+h1, h2, h3, h4, h5, h6, p, a, li, span {
+	&::selection {
+		.bg-pri();
+		color:#fff;
+	}
+	&::-moz-selection {
+		.bg-pri();
+		color:#fff;
+	}
+	&::-webkit-selection {
+		.bg-pri();
+		color:#fff;
+	}
+}
 
 .acf-map {
 	height: 400px;

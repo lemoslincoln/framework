@@ -8,8 +8,6 @@
  */
 
 get_header(); ?>
-
-<?php if ( have_posts() ) : ?>
 	<main id="content" class="container" role="main">
 		<section class="row">
 			<div class="col-sm-12">

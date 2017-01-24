@@ -1,4 +1,7 @@
 <?php
+/* suporte para título */
+add_theme_support( 'title-tag' );
+
 /* key acf google maps */
 function my_acf_init() {
   acf_update_setting('google_api_key', 'AIzaSyB1P-H_fyEh6IaGS_mdIAPnMUIiQhKON2s');

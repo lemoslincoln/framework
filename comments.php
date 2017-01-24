@@ -1,125 +1,70 @@
 <?php
 /**
- * The template for displaying Comments.
- *
- * The area of the page that contains both current comments
- * and the comment form.  The actual display of comments is
- * handled by a callback to twentyten_comment which is
- * located in the functions.php file.
- *
- * @package WordPress
- * @subpackage Starkers
- * @since Starkers 3.1
+ * The template for displaying comments
+ * This is the template that displays the area of the page that contains both the current comments
+ * and the comment form.
  */
+/*
+ * If the current post is protected by a password and
+ * the visitor has not yet entered the password we will
+ * return early without loading the comments.
+ */
+if ( post_password_required() ) {
+	return;
+}
+?>
 
-	
-	if ( post_password_required() ) : 
-		echo '<p>Insira a senha para visualizar os comentários.</p>';
+<div id="comments" class="comments-area">
 
-		/* Stop the rest of comments.php from being processed,
-		 * but don't kill the script entirely -- we still have
-		 * to fully load the template.
-		 */
-		return;
-	endif;
-
-
+	<?php
+	// You can start editing here -- including this comment!
 	if ( have_comments() ) : ?>
-			<!-- STARKERS NOTE: The following h3 id is left intact so that comments can be referenced on the page -->
-			<h3 id="comments-title"><?php
-			printf( _n( '01 Comentário', '%1$s Comentários', get_comments_number(), 'twentyten' ),
-			number_format_i18n( get_comments_number() ), '' . get_the_title() . '' );
-			?></h3>
+		<h2 class="comments-title">
+			<?php
+			$comments_number = get_comments_number();
+			if ( '1' === $comments_number ) {
+				/* translators: %s: post title */
+				printf( _x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'twentyseventeen' ), get_the_title() );
+			} else {
+				printf(
+					/* translators: 1: number of comments, 2: post title */
+					_nx(
+						'%1$s Reply to &ldquo;%2$s&rdquo;',
+						'%1$s Replies to &ldquo;%2$s&rdquo;',
+						$comments_number,
+						'comments title',
+						'twentyseventeen'
+					),
+					number_format_i18n( $comments_number ),
+					get_the_title()
+				);
+			}
+			?>
+		</h2>
 
-<?php 
-			// Are there comments to navigate through?
-			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : 
-				
-				previous_comments_link( __( '&larr; Comentários Anteriores', 'twentyten' ) );
-				next_comments_link( __( 'Próximos Comentários &rarr;', 'twentyten' ) );
+		<ol class="comment-list">
+			<?php
+				wp_list_comments( array(
+					'avatar_size' => 100,
+					'style'       => 'ol',
+					'short_ping'  => true,
+					'reply_text'  => twentyseventeen_get_svg( array( 'icon' => 'mail-reply' ) ) . __( 'Reply', 'twentyseventeen' ),
+				) );
+			?>
+		</ol>
 
-			endif;
+		<?php the_comments_pagination( array(
+			'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous', 'twentyseventeen' ) . '</span>',
+			'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
+		) );
+	endif; // Check for have_comments().
+	// If comments are closed and there are comments, let's leave a little note, shall we?
+	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
-			echo "<ol>";				
-				wp_list_comments('avatar_size=60');
-			echo "</ol>";
-			
-			// Are there comments to navigate through? 
-			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : 
-				previous_comments_link( __( '&larr; Older Comments', 'twentyten' ) );
-				next_comments_link( __( 'Newer Comments &rarr;', 'twentyten' ) ); 
-			endif; // check for comment navigation 
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'twentyseventeen' ); ?></p>
+	<?php
+	endif;
+	comment_form();
+	?>
 
-	else : // or, if we don't have comments:
-
-		/* If there are no comments and comments are closed,
-		 * let's leave a little note, shall we?
-		 */
-		if ( ! comments_open() ) :
-			// Exibe ou não exibe a mensagem de comentários fechados
-			echo '<p>Comentários fechados</p>';
-		endif; // end ! comments_open()
-
-	endif; // end have_comments() 
-
-	$commenter = wp_get_current_commenter();
-	$req = get_option( 'require_name_email' );
-	$aria_req = ( $req ? " aria-required='true'" : '' );
-
-	$fields =  array(
-
-	  'author' =>
-	    '<p class="comment-form-author"><label class="sr-only" for="author">Nome</label> ' .
-	    ( $req ? '<span class="required">*</span>' : '' ) .
-	    '<input id="author" name="author" placeholder="Nome" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-	    '" ' . $aria_req . ' /></p>',
-
-	  'email' =>
-	    '<p class="comment-form-email"><label class="sr-only" for="email">Email</label> ' .
-	    ( $req ? '<span class="required">*</span>' : '' ) .
-	    '<input id="email" name="email" type="text" placeholder="Email" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-	    '" size="30"' . $aria_req . ' /></p>',
-
-	  'url' =>
-	    '<p class="comment-form-url"><label class="sr-only" for="url">Site</label>' .
-	    '<input id="url" name="url" type="text" placeholder="Site"  value="' . esc_attr( $commenter['comment_author_url'] ) .
-	    '" size="30" /></p>',
-	);
-
-
-	$args = array(
-	  'id_form'           => 'commentform',
-	  'id_submit'         => 'submit',
-	  'class_submit'      => 'submit',
-	  'name_submit'       => 'submit',
-	  'title_reply'       => __( 'Deixe um comentário' ),
-	  'title_reply_to'    => __( 'Responda a %s' ),
-	  'cancel_reply_link' => __( 'Cancelar resposta' ),
-	  'label_submit'      => __( 'Postar comentário' ),
-	  'format'            => 'xhtml',
-
-	  'comment_field' =>  '<p class="comment-form-comment"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun' ) .
-	    '</label><textarea id="comment" name="comment" cols="45" rows="4" aria-required="true">' .
-	    '</textarea></p>',
-
-	  'must_log_in' => '<p class="must-log-in">' .
-	    sprintf(
-	      __( 'Você precisa fazer <a href="%s">login</a> para postar um comentário.' ),
-	      wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
-	    ) . '</p>',
-
-	  'logged_in_as' => '<p class="logged-in-as">' .
-	    sprintf(
-	    __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ),
-	      admin_url( 'profile.php' ),
-	      $user_identity,
-	      wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
-	    ) . '</p>',
-
-	  'comment_notes_before' => '',
-	  'comment_notes_after' => '',
-
-	  'fields' => apply_filters( 'comment_form_default_fields', $fields ),
-	);
-
-	comment_form($args); ?>
+</div><!-- #comments -->

@@ -1,13 +1,13 @@
 [
     {
-        "key": "group_5615778308582",
-        "title": "Logotipo",
+        "key": "group_561578035a638",
+        "title": "Op\u00e7\u00f5es Home",
         "fields": [
             {
-                "key": "field_561577915ca7d",
-                "label": "Logotipo Cabe\u00e7alho",
-                "name": "logotipo",
-                "type": "image",
+                "key": "field_58d1e6a290849",
+                "label": "Slider",
+                "name": "",
+                "type": "tab",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -16,64 +16,9 @@
                     "class": "",
                     "id": ""
                 },
-                "return_format": "url",
-                "preview_size": "full",
-                "library": "all",
-                "min_width": "",
-                "min_height": "",
-                "min_size": "",
-                "max_width": "",
-                "max_height": "",
-                "max_size": "",
-                "mime_types": ""
+                "placement": "left",
+                "endpoint": 0
             },
-            {
-                "key": "field_562c15be1ca44",
-                "label": "Logotipo Rodap\u00e9",
-                "name": "logotipo_rodape",
-                "type": "image",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "return_format": "url",
-                "preview_size": "full",
-                "library": "all",
-                "min_width": "",
-                "min_height": "",
-                "min_size": "",
-                "max_width": "",
-                "max_height": "",
-                "max_size": "",
-                "mime_types": ""
-            }
-        ],
-        "location": [
-            [
-                {
-                    "param": "page_type",
-                    "operator": "==",
-                    "value": "front_page"
-                }
-            ]
-        ],
-        "menu_order": 1,
-        "position": "side",
-        "style": "seamless",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": "",
-        "active": 1,
-        "description": ""
-    },
-    {
-        "key": "group_561575b708b04",
-        "title": "Banner Topo",
-        "fields": [
             {
                 "key": "field_5615760144bb1",
                 "label": "Slider Principal",
@@ -91,7 +36,6 @@
                 "max": "",
                 "layout": "block",
                 "button_label": "Adicionar slide",
-                "collapsed": "",
                 "sub_fields": [
                     {
                         "key": "field_5615768044bb3",
@@ -176,33 +120,74 @@
                         "disabled": 0
                     }
                 ]
-            }
-        ],
-        "location": [
-            [
-                {
-                    "param": "page_type",
-                    "operator": "==",
-                    "value": "front_page"
-                }
-            ]
-        ],
-        "menu_order": 2,
-        "position": "acf_after_title",
-        "style": "seamless",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": "",
-        "active": 1,
-        "description": ""
-    },
-    {
-        "key": "group_561578035a638",
-        "title": "Informa\u00e7\u00f5es de Contato",
-        "fields": [
+            },
+            {
+                "key": "field_58d1e6b59084a",
+                "label": "Logotipos",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "left",
+                "endpoint": 0
+            },
+            {
+                "key": "field_561577915ca7d",
+                "label": "Logotipo Cabe\u00e7alho",
+                "name": "logotipo",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "url",
+                "preview_size": "full",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_562c15be1ca44",
+                "label": "Logotipo Rodap\u00e9",
+                "name": "logotipo_rodape",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "url",
+                "preview_size": "full",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
             {
                 "key": "field_5615781729a4c",
-                "label": "Dados da empresa",
+                "label": "Dados de Contato",
                 "name": "",
                 "type": "tab",
                 "instructions": "",
@@ -260,7 +245,7 @@
             },
             {
                 "key": "field_5615790629a53",
-                "label": "Email",
+                "label": "E-mail",
                 "name": "email_info",
                 "type": "text",
                 "instructions": "",
@@ -330,7 +315,6 @@
                 "max": "",
                 "layout": "block",
                 "button_label": "Adicionar nova",
-                "collapsed": "",
                 "sub_fields": [
                     {
                         "key": "field_5615787529a4f",
@@ -972,7 +956,22 @@
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
-        "hide_on_screen": "",
+        "hide_on_screen": [
+            "the_content",
+            "excerpt",
+            "custom_fields",
+            "discussion",
+            "comments",
+            "revisions",
+            "slug",
+            "author",
+            "format",
+            "page_attributes",
+            "featured_image",
+            "categories",
+            "tags",
+            "send-trackbacks"
+        ],
         "active": 1,
         "description": ""
     }

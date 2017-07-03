@@ -63,11 +63,10 @@
 		$('select').not('.multiple').wrap('<div class="select-box"></div>');
 
 		// Fancybox
-		$(".fancybox").fancybox();  	
-		$("a[href$='.jpg'], a[href$='.png'], a[href$='.jpeg'], a[href$='.gif']").fancybox();  	
-		$(".gallery a[href$='.jpg'], .gallery a[href$='.png'], .gallery a[href$='.jpeg'], .gallery a[href$='.gif']").attr('rel','gallery').fancybox();  	
-		$(".video").fancybox({ maxWidth		: 800, maxHeight		: 600, fitToView		: false, width			: '70%', height			: '70%', autoSize		: false, closeClick		: false, openEffect		: 'none', closeEffect		: 'none' });
-
+		$("a[href$='.jpg'], a[href$='.png'], a[href$='.jpeg'], a[href$='.gif'], .fancybox").fancybox({			
+			loop : false,
+		});  	
+				
 		// Rolagem suave
 		$('a.smoothscroll').click(function() {
 		  if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {

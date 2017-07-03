@@ -1,4 +1,4 @@
-Angolanos Framework
+Framework Parceiro Programador
 =========
 
 Authors: 
@@ -6,6 +6,10 @@ lemoslincoln@gmail.com
 vjrjunior@gmail.com
 fale@brunowp.com.br 
 
+### Changelog
+3.0 - 03/07/2017
+- Moving less to sass
+- Add Gulp System
 
 ### Changelog
 2.6 - 14/12/2016

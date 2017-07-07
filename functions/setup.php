@@ -254,8 +254,8 @@ add_action( 'wp_print_scripts', 'bigo_load_scripts' );
 /* Carrega Scripts/Styles para o Fancybox */
 /* ----------------------------------------- */
 function angolanos_add_fancybox() {
-  wp_enqueue_script( 'fancybox-js', get_template_directory_uri() . '/vendors/fancybox/jquery.fancybox.pack.js', array( 'jquery' ), '2.1.5', true );	    
-  wp_enqueue_style( 'fancybox-css', get_template_directory_uri() . '/vendors/fancybox/jquery.fancybox.css' );
+  wp_enqueue_script( 'fancybox-js', get_template_directory_uri() . '/vendors/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '3.2.1', true );	    
+  wp_enqueue_style( 'fancybox-css', get_template_directory_uri() . '/vendors/fancybox/jquery.fancybox.min.css' );
 }
 add_action( 'wp_enqueue_scripts', 'angolanos_add_fancybox' );
 

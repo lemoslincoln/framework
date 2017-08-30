@@ -6,10 +6,10 @@
 
 /* Regras Responsivas */
 /* ----------------------------------------- */
-	@media (max-width: @screen-sm-min)  {
+	// @media (max-width: @screen-sm-min)  {
 	 // Evita que palavras interfiram no tamanho do view width
-	 h1, h2, h3, h4, h5, h6 { word-break: break-all; } 
-	}
+	 h1, h2, h3, h4, h5, h6 { word-break: break-all; hyphens: auto; } 
+	// }
 /* ----------------------------------------- Regras Responsivas */		
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, a, ul, ul li, input, textarea, span, p {
@@ -328,3 +328,36 @@ h1, h2, h3, h4, h5, h6, p, a, li, span {
 	    height: auto;       /* let the content decide it  */
 	} /* bootstrap hack end */
 /* ----------------------------------------- Fix para tabs/modals bootstrap slicks */		
+
+
+/* Sticky object */
+// Css padrão para função no codigo.js
+/* ----------------------------------------- */
+	.sticket-object {
+		&.sticky {
+			position: fixed;
+			top: 0;
+			width: 100vw;
+			left: 0;			
+			z-index: 100;
+		}
+	}
+/* ----------------------------------------- Sticky object */		
+
+
+/* Masks */
+/* ----------------------------------------- */
+	.fade-mask {						
+		position: relative;
+		&:before {
+			content: '.';
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			position: absolute;
+			background-image: linear-gradient(0deg, rgba(33,33,33, .35) 30%, rgba(0,0,0,0.00) 100%);
+			opacity: 7;
+		}
+	}
+/* ----------------------------------------- Masks */		

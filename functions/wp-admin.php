@@ -28,6 +28,7 @@
     remove_meta_box('dashboard_recent_drafts', 'dashboard', 'core');
     remove_meta_box('dashboard_primary', 'dashboard', 'core');
     remove_meta_box('dashboard_secondary', 'dashboard', 'core');
+    remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
   }
   add_action('admin_menu', 'disable_default_dashboard_widgets');
   

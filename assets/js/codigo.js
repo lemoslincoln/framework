@@ -53,6 +53,24 @@
 
 		/*  Default Scripts */
 		/* ----------------------------------------- */			
+
+		if ($('.sticket-object').length) {
+			var stickyNavTop = $('.sticket-object').offset().top;
+			 
+			var stickyNav = function(){
+				var scrollTop = $(window).scrollTop();		      
+				if (scrollTop > stickyNavTop) { 
+				  $('.sticket-object').addClass('sticky');
+				} else {
+				  $('.sticket-object').removeClass('sticky'); 
+				}
+			};
+
+			stickyNav();
+			 
+			$(window).scroll(function() { stickyNav(); });
+		};
+			
 		// Mascara de DDD e 9 dígitos para telefones
 		var SPMaskBehavior = function (val) {
 			  return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';

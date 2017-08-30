@@ -3,8 +3,8 @@
 // Adiciona tamanho de thumbs customizáveis
 	add_action('init', 'add_custom_image_sizes');
   function add_custom_image_sizes() {
-    add_image_size('slider-destaque', 1170, 350, true);
-    add_image_size('imagem-thumb', 800, 600, true);
+    // add_image_size('slider-destaque', 1170, 350, true);
+    // add_image_size('imagem-thumb', 800, 600, true);
   }
 
 
